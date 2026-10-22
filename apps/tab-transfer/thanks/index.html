@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thank you — Tab Transfer lifetime license | macrotool</title>
+<meta name="description" content="Your Tab Transfer lifetime license purchase.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://macrotool.app/apps/tab-transfer/thanks/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="macrotool">
+<meta property="og:title" content="Tab Transfer setup guide | macrotool">
+<meta property="og:description" content="Step-by-step instructions for installing and setting up Tab Transfer for Google Sheets: rules, automation, email notifications and troubleshooting.">
+<meta property="og:url" content="https://macrotool.app/apps/tab-transfer/thanks/">
+<meta property="og:image" content="https://macrotool.app/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f5f3ec">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/css/style.css">
+<script>document.documentElement.classList.remove('no-js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="../../../index.html" aria-label="macrotool home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f1a17"/><path d="M6 13h20M6 19h20M13 6v20M19 6v20" stroke="#fff" stroke-opacity=".2" stroke-width="1"/><rect x="6.75" y="6.75" width="5.5" height="5.5" rx="1" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#c8f26a"/></svg><span>macrotool<span class="tld">.app</span></span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <ul class="nav-links" id="nav-links"><li><a href="../../../index.html#apps">Apps</a></li><li><a href="../../../apps/tab-transfer/">Tab Transfer</a></li><li><a href="../../../index.html#developer">Developer</a></li><li><a href="../../../support/">Support</a></li><li><a class="btn btn-primary" href="https://www.upwork.com/freelancers/~010acf1b6183b365bc?mp_source=share" target="_blank" rel="noopener">Hire Raul</a></li></ul>
+  </nav>
+</header>
+<main id="main">
+<section class="section">
+  <div class="wrap">
+    <div id="thanks" class="thanks pending" aria-live="polite">
+      <div class="state-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+      <h1 id="t-title">Confirming your payment…</h1>
+      <p id="t-text" style="color:var(--muted)">This only takes a moment.</p>
+      <ol id="t-steps" hidden>
+        <li>Go back to your spreadsheet — the Tab Transfer window is probably still open.</li>
+        <li>It unlocks on its own within a few seconds. If it doesn't, click <b>Already bought?</b> on the <b>Move rows</b> screen.</li>
+        <li>Opened Tab Transfer somewhere else? Use <b>Extensions &rarr; Tab Transfer &rarr; Open Tab Transfer</b> while signed in to the same Google account.</li>
+      </ol>
+      <div class="hero-actions" style="justify-content:center;margin-top:32px">
+        <a class="btn btn-primary" href="../help/">Setup guide</a>
+        <a class="btn btn-ghost" href="../../../support/">Contact support</a>
+      </div>
+      <p style="margin-top:28px;color:var(--muted);font-size:.92rem">A receipt from Stripe is on its way to your inbox. Not happy? You can get a full refund within 14 days — just <a href="mailto:support@macrotool.app">email support</a>.</p>
+    </div>
+  </div>
+</section>
+<script>
+(function () {
+  var API = 'https://macrotool-api.REPLACE_WITH_SUBDOMAIN.workers.dev';
+  var box = document.getElementById('thanks');
+  var title = document.getElementById('t-title');
+  var text = document.getElementById('t-text');
+  var steps = document.getElementById('t-steps');
+  var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>';
+  var ICON_ERR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>';
+  var id = new URLSearchParams(location.search).get('session_id') || '';
+
+  function show(state, t, msg, email) {
+    box.className = 'thanks ' + state;
+    if (state !== 'pending') box.querySelector('.state-ico').innerHTML = state === 'error' ? ICON_ERR : ICON_OK;
+    title.textContent = t;
+    text.textContent = msg;
+    if (email) {
+      text.textContent = '';
+      text.append(msg + ' ');
+      var code = document.createElement('span'); code.className = 'who'; code.textContent = email;
+      text.append(code, '.');
+    }
+    steps.hidden = state !== 'ok';
+  }
+
+  if (!/^cs_(test|live)_[A-Za-z0-9]+$/.test(id)) {
+    show('ok', 'Thank you for your purchase!', 'Your lifetime license activates automatically for the Google account you used in Tab Transfer.');
+    return;
+  }
+  var tries = 0;
+  (function check() {
+    fetch(API + '/v1/session?id=' + encodeURIComponent(id))
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.paid) show('ok', 'You\u2019re all set — thank you!', 'Your Tab Transfer lifetime license is active for', d.email);
+        else if (++tries < 10) setTimeout(check, 3000);
+        else show('pending', 'Payment still processing', 'Some payment methods take a little longer. Your license activates as soon as Stripe confirms the payment — you can close this page.');
+      })
+      .catch(function () {
+        show('ok', 'Thank you for your purchase!', 'Your lifetime license activates automatically for the Google account you used in Tab Transfer. If it hasn\u2019t after a few minutes, email support@macrotool.app.');
+      });
+  })();
+})();
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../../../index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f1a17"/><path d="M6 13h20M6 19h20M13 6v20M19 6v20" stroke="#fff" stroke-opacity=".2" stroke-width="1"/><rect x="6.75" y="6.75" width="5.5" height="5.5" rx="1" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#c8f26a"/></svg><span>macrotool<span class="tld">.app</span></span></a>
+        <p style="max-width:30em">Focused add-ons for Google Workspace, built and supported by Raul Araw — Automation &amp; Systems Developer.</p>
+      </div>
+      <div><h4>Apps</h4><ul><li><a href="../../../apps/tab-transfer/">Tab Transfer</a></li><li><a href="../../../apps/tab-transfer/help/">Tab Transfer guide</a></li><li><a href="../../../index.html#apps">All apps</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="../../../index.html#developer">Developer</a></li><li><a href="https://www.upwork.com/freelancers/~010acf1b6183b365bc?mp_source=share" target="_blank" rel="noopener">Upwork profile</a></li><li><a href="../../../support/">Support</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="../../../privacy/">Privacy Policy</a></li><li><a href="../../../terms/">Terms of Service</a></li><li><a href="mailto:support@macrotool.app">support@macrotool.app</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; <span data-year>2026</span> macrotool.app &middot; Raul Araw</span><span>Google Workspace, Google Sheets and Gmail are trademarks of Google LLC. macrotool is an independent developer and is not affiliated with Google.</span></div>
+  </div>
+</footer>
+<script src="../../../assets/js/main.js" defer></script>
+</body>
+</html>
