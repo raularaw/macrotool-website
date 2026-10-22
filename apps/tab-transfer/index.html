@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tab Transfer — Move rows between tabs in Google Sheets | macrotool</title>
+<meta name="description" content="Tab Transfer is a Google Sheets add-on that moves rows between tabs automatically when their status changes, keeping formulas, checkboxes and formatting intact, with optional email notifications.">
+<link rel="canonical" href="https://macrotool.app/apps/tab-transfer/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="macrotool">
+<meta property="og:title" content="Tab Transfer — Move rows between tabs in Google Sheets | macrotool">
+<meta property="og:description" content="Tab Transfer is a Google Sheets add-on that moves rows between tabs automatically when their status changes, keeping formulas, checkboxes and formatting intact, with optional email notifications.">
+<meta property="og:url" content="https://macrotool.app/apps/tab-transfer/">
+<meta property="og:image" content="https://macrotool.app/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f5f3ec">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script>document.documentElement.classList.remove('no-js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="../../index.html" aria-label="macrotool home"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f1a17"/><path d="M6 13h20M6 19h20M13 6v20M19 6v20" stroke="#fff" stroke-opacity=".2" stroke-width="1"/><rect x="6.75" y="6.75" width="5.5" height="5.5" rx="1" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#c8f26a"/></svg><span>macrotool<span class="tld">.app</span></span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <ul class="nav-links" id="nav-links"><li><a href="../../index.html#apps">Apps</a></li><li><a href="../../apps/tab-transfer/" aria-current="page">Tab Transfer</a></li><li><a href="../../index.html#developer">Developer</a></li><li><a href="../../support/">Support</a></li><li><a class="btn btn-primary" href="https://www.upwork.com/freelancers/~010acf1b6183b365bc?mp_source=share" target="_blank" rel="noopener">Hire Raul</a></li></ul>
+  </nav>
+</header>
+<main id="main">
+
+<section class="hero product-hero">
+  <div class="grid-bg"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Home</a> / <a href="../../index.html#apps">Apps</a> / Tab Transfer</nav>
+      <div class="product-title"><svg viewBox="0 0 56 56" aria-hidden="true"><rect width="56" height="56" rx="14" fill="#0b5d46"/><rect x="10" y="14" width="18" height="24" rx="3" fill="#fff" fill-opacity=".92"/><path d="M14 21h10M14 26h10M14 31h6" stroke="#0b5d46" stroke-width="2" stroke-linecap="round"/><rect x="30" y="20" width="16" height="22" rx="3" fill="#c8f26a"/><path d="M34 27h8M34 32h8" stroke="#0f1a17" stroke-width="2" stroke-linecap="round" stroke-opacity=".7"/><path d="M22 44h14m-4-4 4 4-4 4" stroke="#c8f26a" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><h1>Tab Transfer</h1></div>
+      <div class="status-line"><span class="app-tag live">Google Sheets add-on</span><span class="app-tag soon">Coming soon to Google Workspace Marketplace</span></div>
+      <p class="lede"><strong>Move rows between tabs automatically when their status changes.</strong> Set a status column, map each status to a tab, and Tab Transfer keeps your sheet organised — without breaking formulas, checkboxes or formatting.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="help/">Read the setup guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#features">See features</a>
+      </div>
+    </div>
+    <div class="mock-wrap reveal">
+      <div class="chip chip-a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><div>Moved 1 row<small>Requests → Approved</small></div></div>
+      <div class="sheet demo play" role="img" aria-label="Animation: a row whose status changes to Approved moves from the Requests tab to the Approved tab">
+  <div class="sheet-bar"><span class="ref">D3</span><span class="fx">fx</span><span class="formula">Approved<span class="caret"></span></span></div>
+  <table>
+    <thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead>
+    <tbody>
+      <tr class="head"><td>1</td><td>Request</td><td>Owner</td><td>Amount</td><td>Status</td></tr>
+      <tr><td>2</td><td>Laptop refresh</td><td>Maya</td><td>$1,240</td><td><span class="pill wait">Pending</span></td></tr>
+      <tr class="mover"><td>3</td><td>Conference trip</td><td>Jon</td><td>$860</td><td><span class="swap"><span class="pill wait status-a">Pending</span><span class="pill go status-b">Approved</span></span></td></tr>
+      <tr><td>4</td><td>Design software</td><td>Ana</td><td>$390</td><td><span class="pill wait">Pending</span></td></tr>
+      <tr><td>5</td><td>Office chairs</td><td>Leo</td><td>$2,100</td><td><span class="pill neutral">Review</span></td></tr>
+    </tbody>
+  </table>
+  <div class="sheet-tabs"><span class="active">Requests</span><span>Approved <span class="count count-done">+1</span></span><span>Rejected</span></div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="section band" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="cellref"><b>A1</b> Features</div>
+      <h2>Everything a "move this row" macro should have done.</h2>
+      <p>Copy-paste scripts lose formatting, break formulas and trip over shared sheets. Tab Transfer was built to handle the details.</p>
+    </div>
+    <div class="features"><div class="feature reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M4 12h7M4 18h10"/><path d="M16 9l4 3-4 3"/></svg></span><h3>Status-based rules</h3><p>Map each status to a destination tab — <em>Approved</em> → Approved, <em>Done</em> → Archive. Import statuses straight from your dropdown, a selected range, or the values already in the column.</p></div><div class="feature reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4c-2 0-3 1-3 3v13M4 10h6M13 11l6 7M19 11l-6 7"/></svg></span><h3>Formulas stay intact</h3><p>Per-row formulas in the destination are extended to new rows with references adjusted. ARRAYFORMULA, QUERY and FILTER columns are left alone, so nothing breaks with #REF!.</p></div><div class="feature reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 12l3 3 5-6"/></svg></span><h3>Checkboxes, links &amp; notes</h3><p>Checkboxes stay checkboxes, dropdowns keep their rules, and notes, rich-text links and cell formatting travel with the row.</p></div><div class="feature reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><h3>Instant, scheduled or on demand</h3><p>Rows move the moment a status is changed, on a schedule (every 1–12 hours or daily at a set time), or in a batch whenever you click Move rows.</p></div><div class="feature reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><h3>Email notifications</h3><p>Send an email per moved row or one digest per run, with <span class="token">{{Any Header}}</span> placeholders, recipients from a column, CC, reply-to and your Gmail signature.</p></div><div class="feature reveal"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.5 3.3-5.5 6.5-5.5s5.9 2 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c2 .7 3.2 2.5 3.5 5.2"/></svg></span><h3>Safe for shared sheets</h3><p>One owner sets it up; editors just change statuses. Every run is recorded in an activity log, and editors can take over if the owner leaves the file.</p></div></div>
+  </div>
+</section>
+
+<section class="section" id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="cellref"><b>B1</b> How it works</div>
+      <h2>Set up in about two minutes.</h2>
+    </div>
+    <ol class="steps">
+      <li class="reveal"><h3>Install</h3><p>Install Tab Transfer from the Google Workspace Marketplace and approve its permissions.</p></li>
+      <li class="reveal"><h3>Open it</h3><p>In your spreadsheet go to <strong>Extensions → Tab Transfer → Open Tab Transfer</strong>.</p></li>
+      <li class="reveal"><h3>Map statuses</h3><p>Choose your status column, then pick a destination tab for each status.</p></li>
+      <li class="reveal"><h3>Save</h3><p>Rows now move on their own. Add a schedule or email notifications any time.</p></li>
+    </ol>
+    <p style="margin-top:32px"><a href="help/">Full step-by-step guide <svg style="width:16px;height:16px;vertical-align:-3px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+  </div>
+</section>
+
+<section class="section dark on-dark">
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="cellref"><b>C1</b> Notifications</div>
+      <h2>Tell the right person, the moment it moves.</h2>
+      <p style="color:rgba(232,239,233,.8)">Build email templates with any column from your sheet. Send one email per row — to an address taken from the row itself — or a single digest of everything that moved in a run.</p>
+      <ul class="check-list">
+        <li>Placeholders for every header plus <span class="token">{{To Tab}}</span>, <span class="token">{{Row Count}}</span>, <span class="token">{{Spreadsheet Link}}</span></li>
+        <li>Per-row emails or one digest per run</li>
+        <li>Custom sender name, reply-to and CC</li>
+        <li>Paste your Gmail signature, send a test before saving</li>
+      </ul>
+    </div>
+    <div class="mail reveal" aria-hidden="true">
+      <div class="mail-head"><div class="subj">Your request "Conference trip" was approved</div><div class="from">From: Finance Team &middot; to jon@yourcompany.com</div></div>
+      <div class="mail-body">
+        <p>Hi Jon,<br>Good news — your request was moved to <strong>Approved</strong>.</p>
+        <table><tr><td>Request</td><td>Conference trip</td></tr><tr><td>Amount</td><td>$860</td></tr><tr><td>Status</td><td>Approved</td></tr></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap split">
+    <div class="reveal">
+      <div class="cellref"><b>D1</b> Under the hood</div>
+      <h2>Careful with your sheet.</h2>
+      <p style="color:var(--muted)">Tab Transfer reads and writes in bulk, so it stays fast even when hundreds of rows move at once.</p>
+    </div>
+    <ul class="check-list reveal">
+      <li>Columns matched by header name — tabs don't need the same layout</li>
+      <li>Per-row destination formulas are extended; spilling formulas are left alone</li>
+      <li>Conditional-formatting rules are never duplicated into the destination</li>
+      <li>Choose to delete the source row or just clear it</li>
+      <li>Keep the row's own look, match the destination tab, or skip formatting</li>
+      <li>Optional "moved on" timestamp column</li>
+      <li>Exclude tabs you never want scanned</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section band" id="permissions">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="cellref"><b>E1</b> Permissions</div>
+      <h2>What Tab Transfer asks for, and why.</h2>
+      <p>Google shows these permissions when you install. Here's what each one is used for.</p>
+    </div>
+    <div class="table-scroll reveal"><table class="perm"><thead><tr><th style="width:48%">Permission</th><th>Why it's needed</th></tr></thead><tbody><tr><td><strong>See, edit, create and delete your spreadsheets</strong><br><code>https://www.googleapis.com/auth/spreadsheets</code></td><td>Read the status column and move rows between tabs. Tab Transfer only works in the spreadsheet where you open it.</td></tr><tr><td><strong>Display and run third-party web content in prompts and sidebars</strong><br><code>https://www.googleapis.com/auth/script.container.ui</code></td><td>Show the Tab Transfer window inside Google Sheets.</td></tr><tr><td><strong>Allow this application to run when you are not present</strong><br><code>https://www.googleapis.com/auth/script.scriptapp</code></td><td>Create the edit and schedule triggers that move rows automatically.</td></tr><tr><td><strong>Send email as you</strong><br><code>https://www.googleapis.com/auth/script.send_mail</code></td><td>Send the notification emails you configure. Nothing is sent unless you turn notifications on.</td></tr><tr><td><strong>See your primary Google Account email address</strong><br><code>https://www.googleapis.com/auth/userinfo.email</code></td><td>Identify the automation owner and send test emails to you.</td></tr></tbody></table></div>
+    <p style="margin-top:20px;color:var(--muted);font-size:.95rem">Tab Transfer does not send your spreadsheet data to macrotool or any third party. Read the full <a href="../../privacy/">Privacy Policy</a>.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap" style="max-width:900px">
+    <div class="section-head reveal"><div class="cellref"><b>F1</b> FAQ</div><h2>Questions, answered.</h2></div>
+    <div class="faq"><details><summary>Do the tabs need identical columns?</summary><div class="ans"><p>No. Tab Transfer matches columns by header name (case-insensitive), so tabs can have their columns in different orders, and a destination can have extra columns of its own — for example a formula column or a "Moved on" timestamp. Columns that don't exist in the destination are skipped.</p></div></details><details><summary>What happens to formulas in the row being moved?</summary><div class="ans"><p>Formulas from the source row arrive as their calculated values, because their cell references wouldn't be valid in another tab. Formulas that already exist in the destination tab are never overwritten — per-row formulas are extended to the new rows automatically.</p></div></details><details><summary>Who can set it up?</summary><div class="ans"><p>The first person to save the setup in a spreadsheet becomes its owner. Only the owner can change rules or run batch moves; editors can still change statuses, and the owner's automation moves those rows for them. If the owner loses access to the file, an editor can take over.</p></div></details><details><summary>Will it send emails from my account?</summary><div class="ans"><p>Only if you turn email notifications on. Emails are sent with your own Google account through Google's mail service and count toward your daily Google sending quota. You can send yourself a test email before saving.</p></div></details><details><summary>Can I undo a move?</summary><div class="ans"><p>Moves can be reversed with Sheets' version history (File → Version history). For extra safety you can choose to clear the source row instead of deleting it, and try the setup on a copy of your spreadsheet first.</p></div></details><details><summary>Does Tab Transfer see or store my spreadsheet data elsewhere?</summary><div class="ans"><p>No. It runs entirely inside Google Apps Script under your account. Its settings are saved with the spreadsheet itself, and no spreadsheet content is sent to macrotool or any third party. See the <a href="../../privacy/">Privacy Policy</a> for details.</p></div></details><details><summary>How do I get help?</summary><div class="ans"><p>Read the <a href="help/">setup guide</a> or email <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</p></div></details></div>
+  </div>
+</section>
+
+<section class="section-tight" style="padding-bottom:96px">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div><h2>Stuck on something?</h2><p>The setup guide covers every option. If you still need help, email support and you'll hear back from the developer directly.</p></div>
+      <div class="hero-actions" style="margin:0"><a class="btn btn-primary" href="help/">Setup guide</a><a class="btn btn-ghost" href="../../support/">Contact support</a></div>
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Tab Transfer","applicationCategory":"BusinessApplication","operatingSystem":"Google Sheets (web)","url":"https://macrotool.app/apps/tab-transfer/","author":{"@type":"Person","name":"Raul Araw"},"publisher":{"@type":"Organization","name":"macrotool","url":"https://macrotool.app/"},"description":"Google Sheets add-on that moves rows between tabs automatically when their status changes, keeping formulas, checkboxes and formatting, with optional email notifications."}
+</script>
+
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="../../index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f1a17"/><path d="M6 13h20M6 19h20M13 6v20M19 6v20" stroke="#fff" stroke-opacity=".2" stroke-width="1"/><rect x="6.75" y="6.75" width="5.5" height="5.5" rx="1" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#c8f26a"/></svg><span>macrotool<span class="tld">.app</span></span></a>
+        <p style="max-width:30em">Focused add-ons for Google Workspace, built and supported by Raul Araw — Automation &amp; Systems Developer.</p>
+      </div>
+      <div><h4>Apps</h4><ul><li><a href="../../apps/tab-transfer/">Tab Transfer</a></li><li><a href="../../apps/tab-transfer/help/">Tab Transfer guide</a></li><li><a href="../../index.html#apps">All apps</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="../../index.html#developer">Developer</a></li><li><a href="https://www.upwork.com/freelancers/~010acf1b6183b365bc?mp_source=share" target="_blank" rel="noopener">Upwork profile</a></li><li><a href="../../support/">Support</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="../../privacy/">Privacy Policy</a></li><li><a href="../../terms/">Terms of Service</a></li><li><a href="mailto:support@macrotool.app">support@macrotool.app</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; <span data-year>2026</span> macrotool.app &middot; Raul Araw</span><span>Google Workspace, Google Sheets and Gmail are trademarks of Google LLC. macrotool is an independent developer and is not affiliated with Google.</span></div>
+  </div>
+</footer>
+<script src="../../assets/js/main.js" defer></script>
+</body>
+</html>
