@@ -435,3 +435,31 @@ a.app-card:hover .more svg { transform: translateX(4px); }
 }
 .dev-photo::before { display: none; }
 .dev-photo img { box-shadow: 14px 14px 0 -1.5px var(--green-deep), 14px 14px 0 0 var(--lime); }
+
+/* ---------- pricing */
+.pricing { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 920px; }
+.price-card { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; display: flex; flex-direction: column; gap: 18px; box-shadow: var(--shadow); }
+.price-card.pro { background: var(--ink); color: #e8efe9; border-color: var(--ink); }
+.price-card.pro .check-list li { color: #e8efe9; }
+.price-name { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; }
+.price { display: flex; align-items: baseline; gap: 8px; }
+.price .amt { font-family: var(--font-display); font-weight: 700; font-size: 3.2rem; line-height: 1; letter-spacing: -.02em; }
+.price .per { color: var(--muted); font-size: .95rem; }
+.price-card.pro .per { color: rgba(232,239,233,.7); }
+.price-card .check-list { margin: 0; flex: 1; }
+.price-card .btn { align-self: flex-start; }
+.price-tag { position: absolute; top: -12px; right: 24px; background: var(--lime); color: var(--ink); font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 5px 11px; border-radius: 999px; }
+.price-how { margin: 0; font-size: .9rem; color: rgba(232,239,233,.78); background: rgba(255,255,255,.06); border-radius: 12px; padding: 12px 14px; }
+.price-how b { color: var(--lime); font-weight: 600; }
+.price-foot { margin-top: 18px; color: var(--muted); font-size: .92rem; }
+@media (max-width: 760px) { .pricing { grid-template-columns: 1fr; } .price-card { padding: 26px; } }
+
+/* ---------- thank-you page */
+.thanks { max-width: 640px; margin: 0 auto; text-align: center; padding: 40px 0 24px; }
+.thanks .state-ico { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; margin: 0 auto 20px; background: var(--lime); color: var(--ink); }
+.thanks .state-ico svg { width: 30px; height: 30px; }
+.thanks.pending .state-ico { background: var(--paper-2); }
+.thanks.error .state-ico { background: #fde6df; color: #9b2c13; }
+.thanks ol { text-align: left; margin: 28px auto 0; max-width: 480px; padding-left: 1.2em; }
+.thanks ol li { margin: .45em 0; }
+.thanks .who { font-family: var(--font-mono); font-size: .95rem; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 2px 8px; }
