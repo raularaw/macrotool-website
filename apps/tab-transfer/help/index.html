@@ -66,18 +66,18 @@
     <h2 id="open">2. Open Tab Transfer</h2>
     <p>In any spreadsheet you can edit, open the <strong>Extensions → Tab Transfer</strong> menu:</p>
     <ul>
-      <li><strong>Open Tab Transfer</strong> — opens the sidebar on the right. It has five tabs: <strong>Move</strong>, <strong>Rules</strong>, <strong>Behavior</strong>, <strong>Email</strong> and <strong>Log</strong>.</li>
-      <li><strong>Email &amp; signature…</strong> — opens the wide email editor (owner only, after the setup is saved).</li>
-      <li><strong>Help &amp; guide</strong> — this page.</li>
-      <li><strong>Upgrade / license</strong> — shows your license, or the upgrade options on the Free plan.</li>
-      <li><strong>Contact support</strong> — email us at <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</li>
+      <li><strong>Open Tab Transfer</strong>: opens the sidebar on the right. It has five tabs: <strong>Move</strong>, <strong>Rules</strong>, <strong>Behavior</strong>, <strong>Email</strong> and <strong>Log</strong>.</li>
+      <li><strong>Email &amp; signature</strong>: opens the wide email editor (owner only, after the setup is saved).</li>
+      <li><strong>Help &amp; guide</strong>: this page.</li>
+      <li><strong>Upgrade / license</strong>: shows your license, or the upgrade options on the Free plan.</li>
+      <li><strong>Contact support</strong>: email us at <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</li>
     </ul>
     <div class="callout"><p>If the menu doesn't appear right after installing, reload the spreadsheet tab.</p></div>
 
     <h2 id="prepare">3. Prepare your sheet</h2>
     <ul>
       <li><strong>Headers go in row 1</strong> of every tab. Tab Transfer reads row 1 as the column names.</li>
-      <li><strong>Use the same status column name</strong> (for example <code>Status</code>) on every tab rows should move out of — and on destination tabs too if rows may move on again later.</li>
+      <li><strong>Use the same status column name</strong> (for example <code>Status</code>) on every tab rows should move out of, and on destination tabs too if rows may move on again later.</li>
       <li><strong>Create the destination tabs</strong> first, for example <em>Approved</em>, <em>Rejected</em>, <em>Archive</em>.</li>
       <li>Columns are matched by <strong>header name</strong> (ignoring upper/lower case), not position. Destination tabs can use a different column order, skip columns, or add columns of their own.</li>
     </ul>
@@ -94,13 +94,13 @@
       <li>Type a status and press <strong>Enter</strong>, then choose its destination tab. Matching ignores upper/lower case and extra spaces, so <code>approved </code> and <code>Approved</code> are the same status.</li>
       <li><strong>Import from</strong> saves typing: <em>status dropdown</em> reads the dropdown options of the status column, <em>selected cells</em> uses the cells you've selected in the sheet, and <em>selected cell's dropdown</em> uses the dropdown of the selected cell.</li>
       <li><strong>Auto-match tab names</strong> sends each status to the tab with the same name.</li>
-      <li>A status without a destination is ignored — rows with it stay where they are.</li>
+      <li>A status without a destination is ignored. Rows with it stay where they are.</li>
       <li>The Free plan includes <strong>3 rules</strong>; the <a href="#plans">lifetime license</a> removes the limit.</li>
     </ul>
 
     <h2 id="behavior">5. Behavior</h2>
     <h3 id="timestamp">Timestamp column</h3>
-    <p>Optional. Choose a header (for example <code>Status Timestamp</code>) and Tab Transfer fills it with the date and time when a status changes or a row moves — on the source tab and on the destination.</p>
+    <p>Optional. Choose a header (for example <code>Status Timestamp</code>) and Tab Transfer fills it with the date and time when a status changes or a row moves, on the source tab and on the destination.</p>
     <h3 id="after-move">After a row moves</h3>
     <ul>
       <li><strong>Delete it from the source tab</strong> (default). Moved rows are removed in grouped blocks, which is fast even for thousands of rows. If every data row leaves a tab, row 2 is cleared instead of deleted so its formulas and checkboxes survive as a template.</li>
@@ -108,25 +108,25 @@
     </ul>
     <h3 id="formatting">Formatting of moved rows</h3>
     <ul>
-      <li><strong>Keep the row's own formatting</strong> — fill, font, colours, number formats, alignment and wrapping travel with each cell. Colours from conditional formatting are never copied, because the destination's own rules should decide those.</li>
-      <li><strong>Match the destination tab</strong> — new rows copy the look of the destination's last row.</li>
-      <li><strong>Don't change formatting</strong> — only values move.</li>
+      <li><strong>Keep the row's own formatting</strong>: fill, font, colours, number formats, alignment and wrapping travel with each cell. Colours from conditional formatting are never copied, because the destination's own rules should decide those.</li>
+      <li><strong>Match the destination tab</strong>: new rows copy the look of the destination's last row.</li>
+      <li><strong>Don't change formatting</strong>: only values move.</li>
     </ul>
     <p>Links inside cells and <code>HYPERLINK()</code> formulas always stay clickable.</p>
 
     <h2 id="automation">6. Automation</h2>
     <ul>
-      <li id="instant"><strong>Move instantly</strong> — as soon as anyone changes a status, editors included, that row moves. It runs under the owner's account.</li>
-      <li id="schedule"><strong>Run on a schedule</strong> <em>(lifetime license)</em> — every 1, 2, 4, 6, 8 or 12 hours, or daily at a chosen hour in the spreadsheet's time zone. Use it when statuses are set by formulas, Google Forms or imports, which don't count as edits.</li>
+      <li id="instant"><strong>Move instantly</strong>: as soon as anyone changes a status, editors included, that row moves. It runs under the owner's account.</li>
+      <li id="schedule"><strong>Run on a schedule</strong> <em>(lifetime license)</em>: every 1, 2, 4, 6, 8 or 12 hours, or daily at a chosen hour in the spreadsheet's time zone. Use it when statuses are set by formulas, Google Forms or imports, which don't count as edits.</li>
     </ul>
     <p>Google allows add-on schedules at most once an hour. Turning an option off removes its trigger when you save.</p>
 
     <h2 id="move">7. Move tab</h2>
     <p>The <strong>Move</strong> tab is the home screen.</p>
     <ul>
-      <li><strong>Plan card</strong> — your plan, with <em>Upgrade</em> and <em>Already bought?</em> (re-checks your license).</li>
-      <li><strong>This tab</strong> — moves every row on the tab you're viewing whose status has a destination. It follows the tab you click in the sheet.</li>
-      <li><strong>All tabs</strong> — the same for every watched tab.</li>
+      <li><strong>Plan card</strong>: your plan, with <em>Upgrade</em> and <em>Already bought?</em> (re-checks your license).</li>
+      <li><strong>This tab</strong>: moves every row on the tab you're viewing whose status has a destination. It follows the tab you click in the sheet.</li>
+      <li><strong>All tabs</strong>: the same for every watched tab.</li>
     </ul>
     <p>Both buttons stay greyed out until the setup is saved.</p>
     <h3 id="move-status">Status</h3>
@@ -136,7 +136,7 @@
     <ul>
       <li><strong>Formulas in the moved row</strong> arrive as their calculated values, because their cell references wouldn't be correct on another tab. <code>HYPERLINK("…","…")</code> formulas are kept as live formulas.</li>
       <li><strong>Per-row formulas in the destination</strong> (for example <code>=C2*D2</code> in every row, including rows pre-filled below the data) are extended to the new rows automatically.</li>
-      <li><strong>Formulas that fill a whole column</strong> are left alone — an <code>ARRAYFORMULA</code>, <code>BYROW</code>/<code>MAP</code>, <code>QUERY</code> or <code>FILTER</code> in row 2, or a formula in the header cell such as <code>={"Total";ARRAYFORMULA(…)}</code>. Tab Transfer writes around them.</li>
+      <li><strong>Formulas that fill a whole column</strong> are left alone: an <code>ARRAYFORMULA</code>, <code>BYROW</code>/<code>MAP</code>, <code>QUERY</code> or <code>FILTER</code> in row 2, or a formula in the header cell such as <code>={"Total";ARRAYFORMULA(…)}</code>. Tab Transfer writes around them.</li>
       <li><strong>A destination column with no formula</strong> receives the value from the source, like a manual entry.</li>
       <li><strong>Checkboxes</strong> keep their ticked or unticked state, including custom values such as <em>Yes</em>/<em>No</em>. Empty pre-filled checkboxes below your data don't count as data, so new rows fill those rows first.</li>
       <li><strong>Dropdowns</strong> keep their style (chips stay chips). <strong>Notes</strong> and links come along.</li>
@@ -145,14 +145,14 @@
     <h2 id="email">9. Email notifications</h2>
     <p><em>Lifetime license.</em> In the sidebar's <strong>Email</strong> tab, click <strong>Open email &amp; signature editor</strong>, switch email on and add notifications. For each one choose:</p>
     <ul>
-      <li><strong>When rows move to</strong> — a specific tab, or any tab.</li>
-      <li><strong>Send</strong> — <em>An email per row</em>, or <em>One summary</em> per run listing every moved row.</li>
-      <li id="recipients"><strong>To / CC</strong> — fixed addresses, and/or <strong>Also email the address in column</strong> to use each row's own address (for example the <code>Email</code> column).</li>
-      <li id="placeholders"><strong>Subject and message</strong> — click a placeholder to insert it: any header as <span class="token">{{Header Name}}</span>, plus <span class="token">{{From Tab}}</span>, <span class="token">{{To Tab}}</span>, <span class="token">{{Row Count}}</span>, <span class="token">{{Moved At}}</span>, <span class="token">{{Spreadsheet Name}}</span> and <span class="token">{{Spreadsheet Link}}</span>. Checkboxes appear as ☑ / ☐.</li>
+      <li><strong>When rows move to</strong>: a specific tab, or any tab.</li>
+      <li><strong>Send</strong>: <em>An email per row</em>, or <em>One summary</em> per run listing every moved row.</li>
+      <li id="recipients"><strong>To / CC</strong>: fixed addresses, and/or <strong>Also email the address in column</strong> to use each row's own address (for example the <code>Email</code> column).</li>
+      <li id="placeholders"><strong>Subject and message</strong>: click a placeholder to insert it: any header as <span class="token">{{Header Name}}</span>, plus <span class="token">{{From Tab}}</span>, <span class="token">{{To Tab}}</span>, <span class="token">{{Row Count}}</span>, <span class="token">{{Moved At}}</span>, <span class="token">{{Spreadsheet Name}}</span> and <span class="token">{{Spreadsheet Link}}</span>. Checkboxes appear as ☑ / ☐.</li>
       <li><strong>Include row details</strong> adds a table of the moved row(s). <strong>Add my signature</strong> is set per notification.</li>
     </ul>
     <h3 id="attachments">Attachments</h3>
-    <p>Click <strong>Attach files</strong> to add files from your computer — up to 5 files, 15 MB each and 20 MB in total. They're saved in a <em>Tab Transfer attachments</em> folder in your own Google Drive and attached to every email the notification sends. Tab Transfer can only see the files it stored there — never the rest of your Drive. If you delete a file, emails go out without it and the Log tells you.</p>
+    <p>Click <strong>Attach files</strong> to add files from your computer: up to 5 files, 15 MB each and 20 MB in total. They're saved in a <em>Tab Transfer attachments</em> folder in your own Google Drive and attached to every email the notification sends. Tab Transfer can only see the files it stored there, never the rest of your Drive. If you delete a file, emails go out without it and the Log tells you.</p>
     <h3 id="preview-test">Preview and test</h3>
     <p><strong>Preview email</strong> shows the exact email using a real row; <strong>Send me a test</strong> emails it to you, attachments included. Press <strong>Save email settings</strong> to apply.</p>
     <div class="callout"><p>Emails are sent from the owner's Google account and count toward Google's daily sending quota (about 100 recipients a day for free Gmail accounts, more on Google Workspace). If the quota runs out, the remaining emails are skipped and the Log says so.</p></div>
@@ -160,7 +160,7 @@
     <h2 id="signature">10. Sender &amp; signature</h2>
     <ul>
       <li><strong>Sender name</strong> and <strong>Reply-to address</strong> are optional.</li>
-      <li><strong>Signature</strong> — open Gmail → Settings → Signature, select your signature, copy, and paste it into the editor. You can also paste HTML from a signature generator, or edit the HTML directly. The preview shows exactly how it will look.</li>
+      <li><strong>Signature</strong>: open Gmail → Settings → Signature, select your signature, copy, and paste it into the editor. You can also paste HTML from a signature generator, or edit the HTML directly. The preview shows exactly how it will look.</li>
       <li>Use images hosted on the web (https links); pasted or embedded images are removed because email apps block them. Scripts and unsafe code are stripped automatically.</li>
       <li>If spacing around a heading looks too big, the signature's HTML is probably missing <code>style="margin:0"</code> on that heading or paragraph.</li>
     </ul>
@@ -170,10 +170,10 @@
 
     <h2 id="plans">12. Plans &amp; license</h2>
     <ul>
-      <li><strong>Free, forever</strong> — 3 status rules, instant and manual moves, and everything in <a href="#formulas">section 8</a>.</li>
-      <li><strong>Lifetime license — $18 once</strong> — unlimited rules, email notifications with your signature and attachments, and scheduled runs, on every spreadsheet you automate. No subscription.</li>
+      <li><strong>Free, forever</strong>: 3 status rules, instant and manual moves, and everything in <a href="#formulas">section 8</a>.</li>
+      <li><strong>Lifetime license: $18 once</strong>. Unlimited rules, email notifications with your signature and attachments, and scheduled runs, on every spreadsheet you automate. No subscription.</li>
     </ul>
-    <p>Upgrade from the sidebar (<strong>Upgrade</strong> on the Move tab) or from <strong>Extensions → Tab Transfer → Upgrade / license</strong>. Payment is handled by Stripe; your license activates on its own within a few seconds. Bought already but still see Free? Click <strong>Already bought?</strong> on the Move tab. The license belongs to the Google account you bought it with. 14-day refund — see the <a href="../../../terms/#pricing">terms</a>.</p>
+    <p>Upgrade from the sidebar (<strong>Upgrade</strong> on the Move tab) or from <strong>Extensions → Tab Transfer → Upgrade / license</strong>. Payment is handled by Stripe; your license activates on its own within a few seconds. Bought already but still see Free? Click <strong>Already bought?</strong> on the Move tab. The license belongs to the Google account you bought it with. 14-day refund: see the <a href="../../../terms/#pricing">terms</a>.</p>
 
     <h2 id="owners">13. Owners &amp; editors</h2>
     <ul>
@@ -183,7 +183,7 @@
     </ul>
 
     <h2 id="large-runs">14. Large sheets &amp; limits</h2>
-    <p>Google stops any add-on run after 6 minutes. For very large batches Tab Transfer works to a budget: it stops starting new moves at 5 minutes and stops sending emails at 5½ minutes, then schedules itself to continue about a minute later — repeating until everything is done. A tab is never half-moved, and unsent emails are queued and sent first by the next run, so nothing is duplicated or lost. You'll see <em>Continued</em> entries in the Log.</p>
+    <p>Google stops any add-on run after 6 minutes. For very large batches Tab Transfer works to a budget: it stops starting new moves at 5 minutes and stops sending emails at 5½ minutes, then schedules itself to continue about a minute later, repeating until everything is done. A tab is never half-moved, and unsent emails are queued and sent first by the next run, so nothing is duplicated or lost. You'll see <em>Continued</em> entries in the Log.</p>
 
     <h2 id="troubleshooting">15. Troubleshooting</h2>
     <h3>Rows aren't moving</h3>
@@ -208,7 +208,7 @@
     <div class="foot-grid">
       <div>
         <a class="brand" href="../../../index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f1a17"/><path d="M6 13h20M6 19h20M13 6v20M19 6v20" stroke="#fff" stroke-opacity=".2" stroke-width="1"/><rect x="6.75" y="6.75" width="5.5" height="5.5" rx="1" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#c8f26a"/></svg><span>macrotool<span class="tld">.app</span></span></a>
-        <p style="max-width:30em">Focused add-ons for Google Workspace, built and supported by Raul Araw — Automation &amp; Systems Developer.</p>
+        <p style="max-width:30em">Focused add-ons for Google Workspace, built and supported by Raul Araw, Automation &amp; Systems Developer.</p>
       </div>
       <div><h4>Apps</h4><ul><li><a href="../../../apps/tab-transfer/">Tab Transfer</a></li><li><a href="../../../apps/tab-transfer/help/">Tab Transfer guide</a></li><li><a href="../../../index.html#apps">All apps</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="../../../index.html#developer">Developer</a></li><li><a href="https://www.upwork.com/freelancers/~010acf1b6183b365bc?mp_source=share" target="_blank" rel="noopener">Upwork profile</a></li><li><a href="../../../support/">Support</a></li></ul></div>

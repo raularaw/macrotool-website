@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Thank you — Tab Transfer lifetime license | macrotool</title>
+<title>Thank you | Tab Transfer lifetime license | macrotool</title>
 <meta name="description" content="Your Tab Transfer lifetime license purchase.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://macrotool.app/apps/tab-transfer/thanks/">
@@ -40,7 +40,7 @@
       <h1 id="t-title">Confirming your payment…</h1>
       <p id="t-text" style="color:var(--muted)">This only takes a moment.</p>
       <ol id="t-steps" hidden>
-        <li>Go back to your spreadsheet — the Tab Transfer window is probably still open.</li>
+        <li>Go back to your spreadsheet. The Tab Transfer window is probably still open.</li>
         <li>It unlocks on its own within a few seconds. If it doesn't, click <b>Already bought?</b> on the sidebar's <b>Move</b> tab.</li>
         <li>Opened Tab Transfer somewhere else? Use <b>Extensions &rarr; Tab Transfer &rarr; Open Tab Transfer</b> while signed in to the same Google account.</li>
       </ol>
@@ -48,7 +48,7 @@
         <a class="btn btn-primary" href="../help/">Guide</a>
         <a class="btn btn-ghost" href="../../../support/">Contact support</a>
       </div>
-      <p style="margin-top:28px;color:var(--muted);font-size:.92rem">A receipt from Stripe is on its way to your inbox. Not happy? You can get a full refund within 14 days — just <a href="mailto:support@macrotool.app">email support</a>.</p>
+      <p style="margin-top:28px;color:var(--muted);font-size:.92rem">A receipt from Stripe is on its way to your inbox. Not happy? You can get a full refund within 14 days. Just <a href="mailto:support@macrotool.app">email support</a>.</p>
     </div>
   </div>
 </section>
@@ -86,9 +86,9 @@
     fetch(API + '/v1/session?id=' + encodeURIComponent(id))
       .then(function (r) { return r.json(); })
       .then(function (d) {
-        if (d.paid) show('ok', 'You\u2019re all set — thank you!', 'Your Tab Transfer lifetime license is active for', d.email);
+        if (d.paid) show('ok', 'You\u2019re all set. Thank you!', 'Your Tab Transfer lifetime license is active for', d.email);
         else if (++tries < 10) setTimeout(check, 3000);
-        else show('pending', 'Payment still processing', 'Some payment methods take a little longer. Your license activates as soon as Stripe confirms the payment — you can close this page.');
+        else show('pending', 'Payment still processing', 'Some payment methods take a little longer. Your license activates as soon as Stripe confirms the payment. You can close this page.');
       })
       .catch(function () {
         show('ok', 'Thank you for your purchase!', 'Your lifetime license activates automatically for the Google account you used in Tab Transfer. If it hasn\u2019t after a few minutes, email support@macrotool.app.');
@@ -102,7 +102,7 @@
     <div class="foot-grid">
       <div>
         <a class="brand" href="../../../index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f1a17"/><path d="M6 13h20M6 19h20M13 6v20M19 6v20" stroke="#fff" stroke-opacity=".2" stroke-width="1"/><rect x="6.75" y="6.75" width="5.5" height="5.5" rx="1" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#c8f26a"/></svg><span>macrotool<span class="tld">.app</span></span></a>
-        <p style="max-width:30em">Focused add-ons for Google Workspace, built and supported by Raul Araw — Automation &amp; Systems Developer.</p>
+        <p style="max-width:30em">Focused add-ons for Google Workspace, built and supported by Raul Araw, Automation &amp; Systems Developer.</p>
       </div>
       <div><h4>Apps</h4><ul><li><a href="../../../apps/tab-transfer/">Tab Transfer</a></li><li><a href="../../../apps/tab-transfer/help/">Tab Transfer guide</a></li><li><a href="../../../index.html#apps">All apps</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="../../../index.html#developer">Developer</a></li><li><a href="https://www.upwork.com/freelancers/~010acf1b6183b365bc?mp_source=share" target="_blank" rel="noopener">Upwork profile</a></li><li><a href="../../../support/">Support</a></li></ul></div>

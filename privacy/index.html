@@ -41,7 +41,7 @@
     <h2 id="who">Who we are</h2><p>macrotool ("macrotool", "we", "us") is an independent software developer operated by Raul Araw. We publish add-ons for Google Workspace, including <strong>Tab Transfer</strong> for Google Sheets (together, the "Apps"). This policy explains what information the Apps access, how it is used, and the choices you have. Contact: <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</p><h2 id="summary">The short version</h2><ul>
 <li>The Apps run inside Google Apps Script, under your own Google account.</li>
 <li>Your spreadsheet content, the emails you send, your signature and any files you attach <strong>never leave Google</strong>. We have no access to them.</li>
-<li>Our only server is a small license service. It receives your <strong>Google account email address</strong> (verified by Google) to tell whether you are on the free plan or own a lifetime license — nothing else.</li>
+<li>Our only server is a small license service. It receives your <strong>Google account email address</strong> (verified by Google) to tell whether you are on the free plan or own a lifetime license. Nothing else.</li>
 <li>Payments are handled by <strong>Stripe</strong>; we never see your card details.</li>
 <li>We do <strong>not</strong> sell, rent or share your data, and we do not use it for advertising.</li>
 <li>Settings are stored inside your own Google file or Google account.</li>
@@ -49,19 +49,19 @@
 <h3>Tab Transfer</h3>
 <p>When you use Tab Transfer in a spreadsheet, it accesses, through Google's APIs:</p>
 <ul>
-<li><strong>Spreadsheet content</strong> in the spreadsheet where you open it — tab names, header names, cell values, formulas, formatting, notes and data validation — so it can move rows between tabs as you configure.</li>
-<li><strong>Your Google account email address</strong> — to identify the automation owner, to show who saved the setup, and to send test emails to you.</li>
-<li><strong>Email recipient addresses and message content</strong> you configure, including addresses read from a column you choose — only to send the notifications you set up.</li>
+<li><strong>Spreadsheet content</strong> in the spreadsheet where you open it (tab names, header names, cell values, formulas, formatting, notes and data validation), so it can move rows between tabs as you configure.</li>
+<li><strong>Your Google account email address</strong>: to identify the automation owner, to show who saved the setup, and to send test emails to you.</li>
+<li><strong>Email recipient addresses and message content</strong> you configure, including addresses read from a column you choose, only to send the notifications you set up.</li>
 <li><strong>Your email signature</strong>, if you paste one into the app.</li>
-<li><strong>Files you attach to email notifications</strong> — only the files you upload in the add-on. They are saved in a <em>Tab Transfer attachments</em> folder in your own Google Drive and read back when an email is sent. Tab Transfer uses Google's <code>drive.file</code> permission, so it can access only the files it created there and cannot see anything else in your Drive.</li>
-<li><strong>A Google-signed identity token</strong> (OpenID Connect) — sent to our license service so it can confirm your Google account email address and look up your plan.</li>
+<li><strong>Files you attach to email notifications</strong>: only the files you upload in the add-on. They are saved in a <em>Tab Transfer attachments</em> folder in your own Google Drive and read back when an email is sent. Tab Transfer uses Google's <code>drive.file</code> permission, so it can access only the files it created there and cannot see anything else in your Drive.</li>
+<li><strong>A Google-signed identity token</strong> (OpenID Connect), sent to our license service so it can confirm your Google account email address and look up your plan.</li>
 </ul><h2 id="use">How the information is used</h2><p>Information is used solely to provide the features you see in the Apps: reading statuses, moving rows, applying formatting, creating the triggers that run your automation, recording an activity log and sending the emails you configure. It is not used for any other purpose.</p><h2 id="storage">Where information is stored</h2><ul>
-<li><strong>Setup and activity log</strong> — stored with the spreadsheet itself (Apps Script document properties and spreadsheet developer metadata), visible to the add-on in that spreadsheet only.</li>
-<li><strong>Email signature</strong> — stored in your Apps Script user properties, tied to your Google account.</li>
-<li><strong>Attachments</strong> — stored as files in your own Google Drive (a <em>Tab Transfer attachments</em> folder); the notification keeps only each file's ID. Delete the files in Drive at any time.</li>
-<li><strong>Emails</strong> — sent through Google's MailApp service from your Google account; copies may appear in your Gmail Sent folder according to Google's behaviour.</li>
-<li><strong>Your plan</strong> — a cached copy (free or lifetime) is kept in your Apps Script user properties so the add-on doesn't need to ask our server on every edit.</li>
-<li><strong>License records</strong> — stored by macrotool in a Cloudflare D1 database (see <a href="#licensing">Licensing and payments</a>).</li>
+<li><strong>Setup and activity log</strong>: stored with the spreadsheet itself (Apps Script document properties and spreadsheet developer metadata), visible to the add-on in that spreadsheet only.</li>
+<li><strong>Email signature</strong>: stored in your Apps Script user properties, tied to your Google account.</li>
+<li><strong>Attachments</strong>: stored as files in your own Google Drive (a <em>Tab Transfer attachments</em> folder); the notification keeps only each file's ID. Delete the files in Drive at any time.</li>
+<li><strong>Emails</strong>: sent through Google's MailApp service from your Google account; copies may appear in your Gmail Sent folder according to Google's behaviour.</li>
+<li><strong>Your plan</strong>: a cached copy (free or lifetime) is kept in your Apps Script user properties so the add-on doesn't need to ask our server on every edit.</li>
+<li><strong>License records</strong>: stored by macrotool in a Cloudflare D1 database (see <a href="#licensing">Licensing and payments</a>).</li>
 </ul>
 <p>Spreadsheet content, settings, signatures, attachments and emails stay within Google's infrastructure, protected by Google's security. macrotool does not have access to your spreadsheets or stored settings.</p>
 <h2 id="licensing">Licensing and payments</h2>
@@ -71,11 +71,11 @@
 <li>if you buy a license: the purchase date, amount and currency, the license status (active, refunded or disputed) and the Stripe identifiers of the payment (checkout session, payment and customer IDs).</li>
 </ul>
 <p>We use this only to provide the license you are entitled to, to restore it if you reinstall, to handle refunds and support, and to keep the accounting records the law requires. We do not use it for marketing unless you separately opt in, and we never sell it.</p>
-<p><strong>Payments.</strong> When you upgrade, you pay on a Stripe-hosted checkout page. Stripe collects your payment details and billing information directly and processes them under the <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy Policy</a>. We receive only a confirmation of the payment, your email address and the amount — never your card number.</p><h2 id="sharing">Sharing and disclosure</h2><p>We do not sell, trade or rent your information, and we do not use third-party analytics or advertising in the Apps. Your information is processed only by these service providers, each for the purpose stated:</p>
+<p><strong>Payments.</strong> When you upgrade, you pay on a Stripe-hosted checkout page. Stripe collects your payment details and billing information directly and processes them under the <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy Policy</a>. We receive only a confirmation of the payment, your email address and the amount, never your card number.</p><h2 id="sharing">Sharing and disclosure</h2><p>We do not sell, trade or rent your information, and we do not use third-party analytics or advertising in the Apps. Your information is processed only by these service providers, each for the purpose stated:</p>
 <ul>
-<li><strong>Google</strong> — runs the add-on, stores your settings and sends your emails (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>).</li>
-<li><strong>Cloudflare</strong> — hosts the license service and its database (your email address and license records only) (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a>).</li>
-<li><strong>Stripe</strong> — processes payments for lifetime licenses (<a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy Policy</a>).</li>
+<li><strong>Google</strong>: runs the add-on, stores your settings and sends your emails (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>).</li>
+<li><strong>Cloudflare</strong>: hosts the license service and its database (your email address and license records only) (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a>).</li>
+<li><strong>Stripe</strong>: processes payments for lifetime licenses (<a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy Policy</a>).</li>
 </ul>
 <p>We may also disclose information if required by law, or as part of a merger or acquisition with notice to you.</p><h2 id="limited">Google API Services User Data Policy</h2><div class="callout"><p>macrotool's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p></div>
 <p>In particular: we only use Google user data to provide and improve user-facing features of the Apps; we do not transfer it except as needed to provide those features, to comply with law, or as part of a merger or acquisition with notice to you; we do not use it for advertising; and no human reads it unless you give explicit permission (for example when you share a spreadsheet with us for support), it is needed for security purposes, or it is required by law.</p><h2 id="retention">Retention and deletion</h2><p>Settings and the activity log remain in your spreadsheet until you remove them or delete the file. The activity log keeps only the 25 most recent runs. To remove access entirely, uninstall the add-on (Extensions → Add-ons → Manage add-ons) and revoke it at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>. Any triggers the add-on created stop when access is revoked. Attachment files stay in your Drive until you delete them.</p>
@@ -88,7 +88,7 @@
     <div class="foot-grid">
       <div>
         <a class="brand" href="../index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#0f1a17"/><path d="M6 13h20M6 19h20M13 6v20M19 6v20" stroke="#fff" stroke-opacity=".2" stroke-width="1"/><rect x="6.75" y="6.75" width="5.5" height="5.5" rx="1" fill="none" stroke="#fff" stroke-width="1.5"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#c8f26a"/></svg><span>macrotool<span class="tld">.app</span></span></a>
-        <p style="max-width:30em">Focused add-ons for Google Workspace, built and supported by Raul Araw — Automation &amp; Systems Developer.</p>
+        <p style="max-width:30em">Focused add-ons for Google Workspace, built and supported by Raul Araw, Automation &amp; Systems Developer.</p>
       </div>
       <div><h4>Apps</h4><ul><li><a href="../apps/tab-transfer/">Tab Transfer</a></li><li><a href="../apps/tab-transfer/help/">Tab Transfer guide</a></li><li><a href="../index.html#apps">All apps</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="../index.html#developer">Developer</a></li><li><a href="https://www.upwork.com/freelancers/~010acf1b6183b365bc?mp_source=share" target="_blank" rel="noopener">Upwork profile</a></li><li><a href="../support/">Support</a></li></ul></div>
