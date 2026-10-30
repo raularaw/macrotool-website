@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tab Transfer guide | macrotool</title>
-<meta name="description" content="How every part of Tab Transfer for Google Sheets works: rules, behavior, automation, email notifications with signature and attachments, plans and troubleshooting.">
+<meta name="description" content="How every part of Tab Transfer for Google Sheets works: rules, column check, behavior, automation, email notifications, documents from Google Doc, Word and PDF templates, plans and troubleshooting.">
 <link rel="canonical" href="https://macrotool.app/apps/tab-transfer/help/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="macrotool">
 <meta property="og:title" content="Tab Transfer guide | macrotool">
-<meta property="og:description" content="How every part of Tab Transfer for Google Sheets works: rules, behavior, automation, email notifications with signature and attachments, plans and troubleshooting.">
+<meta property="og:description" content="How every part of Tab Transfer for Google Sheets works: rules, column check, behavior, automation, email notifications, documents from Google Doc, Word and PDF templates, plans and troubleshooting.">
 <meta property="og:url" content="https://macrotool.app/apps/tab-transfer/help/">
 <meta property="og:image" content="https://macrotool.app/assets/img/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -43,13 +43,14 @@
     <li><a href="#move">7. Move tab</a></li>
     <li><a href="#formulas">8. Formulas, checkboxes &amp; formatting</a></li>
     <li><a href="#email">9. Email notifications</a></li>
-    <li><a href="#signature">10. Sender &amp; signature</a></li>
-    <li><a href="#log">11. Activity log</a></li>
-    <li><a href="#plans">12. Plans &amp; license</a></li>
-    <li><a href="#owners">13. Owners &amp; editors</a></li>
-    <li><a href="#large-runs">14. Large sheets &amp; limits</a></li>
-    <li><a href="#troubleshooting">15. Troubleshooting</a></li>
-    <li><a href="#uninstall">16. Turn off or uninstall</a></li>
+    <li><a href="#documents">10. Documents</a></li>
+    <li><a href="#signature">11. Sender &amp; signature</a></li>
+    <li><a href="#log">12. Activity log</a></li>
+    <li><a href="#plans">13. Plans &amp; license</a></li>
+    <li><a href="#owners">14. Owners &amp; editors</a></li>
+    <li><a href="#large-runs">15. Large sheets &amp; limits</a></li>
+    <li><a href="#troubleshooting">16. Troubleshooting</a></li>
+    <li><a href="#uninstall">17. Turn off or uninstall</a></li>
   </ol></aside>
   <article class="doc">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="../../../index.html">Home</a> / <a href="../">Tab Transfer</a> / Guide</nav>
@@ -67,11 +68,12 @@
     <p>In any spreadsheet you can edit, open the <strong>Extensions → Tab Transfer</strong> menu:</p>
     <ul>
       <li><strong>Open Tab Transfer</strong>: opens the sidebar on the right. It has five tabs: <strong>Move</strong>, <strong>Rules</strong>, <strong>Behavior</strong>, <strong>Email</strong> and <strong>Log</strong>.</li>
-      <li><strong>Email &amp; signature</strong>: opens the wide email editor (owner only, after the setup is saved).</li>
+      <li><strong>Emails &amp; documents</strong>: opens the wide editor for email notifications, documents and your signature (owner only, after the setup is saved).</li>
       <li><strong>Help &amp; guide</strong>: this page.</li>
       <li><strong>Upgrade / license</strong>: shows your license, or the upgrade options on the Free plan.</li>
       <li><strong>Contact support</strong>: email us at <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</li>
     </ul>
+    <p>Long dropdowns (8 or more options, such as a list of columns) have a search box: click the dropdown and start typing. Use ↑ ↓ and Enter to pick, Esc to close.</p>
     <div class="callout"><p>If the menu doesn't appear right after installing, reload the spreadsheet tab.</p></div>
 
     <h2 id="prepare">3. Prepare your sheet</h2>
@@ -96,6 +98,15 @@
       <li><strong>Auto-match tab names</strong> sends each status to the tab with the same name.</li>
       <li>A status without a destination is ignored. Rows with it stay where they are.</li>
       <li>The Free plan includes <strong>3 rules</strong>; the <a href="#plans">lifetime license</a> removes the limit.</li>
+    </ul>
+    <h3 id="column-check">Column check</h3>
+    <p>Columns are matched by their row 1 header. If a column exists on the source tab but not on the destination, its data is <strong>not moved</strong>, and it's lost when the row leaves the source tab (deleted with the row, or cleared if you keep the row). The column check finds these before it happens.</p>
+    <ul>
+      <li>Click <strong>Check columns</strong> at the bottom of the Rules tab. It reads the current headers of every watched tab and every destination tab.</li>
+      <li>You get one card per destination tab, in the order of your rules. A red number shows how many columns would be lost, a red <strong>!</strong> means the tab no longer exists, and a green check means every column matches.</li>
+      <li>Click a card to see each route into that tab (for example <em>Inbox → Approved</em>): the missing columns, headers that look alike (<code>E-mail</code> vs <code>Email</code>), columns that only exist on the destination, and a missing timestamp or status column.</li>
+      <li>The Rules tab shows a red badge with the number of routes that would lose data. When you press <strong>Save setup</strong> with such routes, Tab Transfer asks first: <em>Review columns</em> or <em>Save anyway</em>.</li>
+      <li>To fix it, add the missing column to the destination with exactly the same header text, or rename a near-match so both headers are the same. Columns that only exist on the destination are fine: they're filled by their own formulas or left empty.</li>
     </ul>
 
     <h2 id="behavior">5. Behavior</h2>
@@ -143,21 +154,50 @@
     </ul>
 
     <h2 id="email">9. Email notifications</h2>
-    <p><em>Lifetime license.</em> In the sidebar's <strong>Email</strong> tab, click <strong>Open email &amp; signature editor</strong>, switch email on and add notifications. For each one choose:</p>
+    <p><em>Lifetime license.</em> In the sidebar's <strong>Email</strong> tab, click <strong>Open emails &amp; documents editor</strong> (or use <strong>Extensions → Tab Transfer → Emails &amp; documents</strong>), switch email on and add notifications. For each one choose:</p>
     <ul>
       <li><strong>When rows move to</strong>: a specific tab, or any tab.</li>
       <li><strong>Send</strong>: <em>An email per row</em>, or <em>One summary</em> per run listing every moved row.</li>
       <li id="recipients"><strong>To / CC</strong>: fixed addresses, and/or <strong>Also email the address in column</strong> to use each row's own address (for example the <code>Email</code> column).</li>
       <li id="placeholders"><strong>Subject and message</strong>: click a placeholder to insert it: any header as <span class="token">{{Header Name}}</span>, plus <span class="token">{{From Tab}}</span>, <span class="token">{{To Tab}}</span>, <span class="token">{{Row Count}}</span>, <span class="token">{{Moved At}}</span>, <span class="token">{{Spreadsheet Name}}</span> and <span class="token">{{Spreadsheet Link}}</span>. Checkboxes appear as ☑ / ☐.</li>
       <li><strong>Include row details</strong> adds a table of the moved row(s). <strong>Add my signature</strong> is set per notification.</li>
+      <li><strong>Attach the row's document</strong>: when a <a href="#documents">document</a> is set up for the same tab, an email per row gets that row's file attached as a PDF, and a summary email lists links to all the new files.</li>
     </ul>
     <h3 id="attachments">Attachments</h3>
     <p>Click <strong>Attach files</strong> to add files from your computer: up to 5 files, 15 MB each and 20 MB in total. They're saved in a <em>Tab Transfer attachments</em> folder in your own Google Drive and attached to every email the notification sends. Tab Transfer can only see the files it stored there, never the rest of your Drive. If you delete a file, emails go out without it and the Log tells you.</p>
     <h3 id="preview-test">Preview and test</h3>
-    <p><strong>Preview email</strong> shows the exact email using a real row; <strong>Send me a test</strong> emails it to you, attachments included. Press <strong>Save email settings</strong> to apply.</p>
+    <p><strong>Preview email</strong> shows the exact email using a real row; <strong>Send me a test</strong> emails it to you, attachments included. Press <strong>Save</strong> at the bottom of the window to apply.</p>
     <div class="callout"><p>Emails are sent from the owner's Google account and count toward Google's daily sending quota (about 100 recipients a day for free Gmail accounts, more on Google Workspace). If the quota runs out, the remaining emails are skipped and the Log says so.</p></div>
 
-    <h2 id="signature">10. Sender &amp; signature</h2>
+    <h2 id="documents">10. Documents</h2>
+    <p><em>Lifetime license.</em> Create a file for every row that moves to a tab: an invoice, a contract, a certificate, a filled-in form. Tab Transfer fills a copy of your template with the row's values, saves it in your Drive and writes a clickable link to the file in a column of the moved row.</p>
+    <p>Open <strong>Emails &amp; documents</strong>, choose <strong>Documents</strong> on the left and click <strong>Add document</strong>. Each card is one tab, with its own template and link column:</p>
+    <ul>
+      <li><strong>When rows move to</strong>: the destination tab.</li>
+      <li id="doc-link"><strong>Put the file link in column</strong>: a column on that tab, for example <code>Invoice</code>. The file name is written there as a link. Use a plain column: a formula there is replaced in moved rows, and an <code>ARRAYFORMULA</code> in the header would stop working (the card warns you). The status column can't be used.</li>
+      <li><strong>Template</strong>: <strong>Choose from Drive</strong> or <strong>Upload a file</strong>. See the two template types below.</li>
+      <li><strong>Save each file as</strong>: for Google Doc and Word templates, <em>PDF</em> (best for emailing and printing) or <em>Google Doc</em> (still editable). For PDF forms, <em>Flattened PDF</em> or <em>Fillable PDF</em>.</li>
+      <li><strong>File name</strong>: click a placeholder to insert it, for example <span class="token">{{Invoice No}}</span> - <span class="token">{{Customer}}</span>.</li>
+      <li><strong>Who can open the files</strong>: <em>Only me</em>, or <em>Anyone with the link</em> if the people you email should open the link. Attached PDFs work either way.</li>
+      <li><strong>Skip rows that already have a file</strong>: if the row already has a link in the column, no new file is made. Useful when rows move between several tabs.</li>
+    </ul>
+    <h3 id="doc-templates">Google Doc and Word templates</h3>
+    <p>Write <span class="token">{{Header Name}}</span> in the document wherever a value should go, in the body, tables, headers or footers. Any header of the tab works, plus <span class="token">{{To Tab}}</span>, <span class="token">{{From Tab}}</span>, <span class="token">{{Moved At}}</span>, <span class="token">{{Today}}</span>, <span class="token">{{Spreadsheet Name}}</span> and <span class="token">{{Spreadsheet Link}}</span>. After you choose the template, the card shows every placeholder it found: green ones match a column, red ones don't and would stay as typed, so rename the column or the placeholder. Word files (.docx) are converted to a Google Doc once, when you choose them; the formatting of the template is kept.</p>
+    <h3 id="pdf-forms">PDF form templates</h3>
+    <p>Use a PDF that has <strong>fillable form fields</strong>, for example a form made in Adobe Acrobat (<em>Prepare a form</em>) or a form from a supplier or agency. After you choose it, the card lists every field with a <strong>Fill with</strong> dropdown: a column, a built-in value such as Today, or <em>Leave empty</em>. Fields with the same name as a column are matched automatically, ignoring case, spaces and punctuation (<code>customer_name</code> matches <em>Customer Name</em>).</p>
+    <ul>
+      <li><strong>Text fields</strong> get the cell's value as shown in the sheet. Line breaks are removed in single-line fields, and fields with a character limit are cut to fit.</li>
+      <li><strong>Checkboxes</strong> are ticked when the value is TRUE, Yes, X, 1 or a ticked checkbox.</li>
+      <li><strong>Choice, dropdown and list fields</strong> select the option that matches the value.</li>
+      <li><strong>Flattened PDF</strong> prints the values on the page and removes the form, so nothing can be changed. <strong>Fillable PDF</strong> keeps the values in the fields, which can still be edited.</li>
+      <li>PDF form fields only support Latin characters. Other characters (for example Chinese or emoji) are replaced with "?" and the Log says so. Password-protected PDFs and PDFs without form fields can't be used; use a Google Doc template for those.</li>
+    </ul>
+    <h3 id="doc-files">Where the files are saved</h3>
+    <p>Everything is saved in the owner's Google Drive, in folders Tab Transfer creates: new documents in <em>Tab Transfer documents › [tab name]</em>, uploaded templates in <em>Tab Transfer templates</em>. Templates you pick from Drive stay where they are and are only read. Tab Transfer uses Google's <code>drive.file</code> permission, so it can only see the templates you choose and the files it creates, never the rest of your Drive.</p>
+    <h3 id="doc-existing">Preview and existing rows</h3>
+    <p><strong>Preview document</strong> makes one sample file from the first row of the tab and opens it, named "[Preview] …" in the same folder (delete it when you're done). <strong>Create for rows already there</strong> makes files for rows that are already on the tab and have an empty link cell; save first. Files are made while rows move, so large batches with documents take longer and may <a href="#large-runs">continue in a second run</a>.</p>
+
+    <h2 id="signature">11. Sender &amp; signature</h2>
     <ul>
       <li><strong>Sender name</strong> and <strong>Reply-to address</strong> are optional.</li>
       <li><strong>Signature</strong>: open Gmail → Settings → Signature, select your signature, copy, and paste it into the editor. You can also paste HTML from a signature generator, or edit the HTML directly. The preview shows exactly how it will look.</li>
@@ -165,39 +205,41 @@
       <li>If spacing around a heading looks too big, the signature's HTML is probably missing <code>style="margin:0"</code> on that heading or paragraph.</li>
     </ul>
 
-    <h2 id="log">11. Activity log</h2><span id="activity" aria-hidden="true"></span>
+    <h2 id="log">12. Activity log</h2><span id="activity" aria-hidden="true"></span>
     <p>The <strong>Log</strong> tab lists the 25 most recent runs: when they ran, how they were triggered (<em>Instant</em>, <em>Manual</em>, <em>Scheduled</em> or <em>Continued</em>), how many rows went to each tab, emails sent, and any problems. The Move tab shows the latest three.</p>
 
-    <h2 id="plans">12. Plans &amp; license</h2>
+    <h2 id="plans">13. Plans &amp; license</h2>
     <ul>
       <li><strong>Free, forever</strong>: 3 status rules, instant and manual moves, and everything in <a href="#formulas">section 8</a>.</li>
-      <li><strong>Lifetime license: $18 once</strong>. Unlimited rules, email notifications with your signature and attachments, and scheduled runs, on every spreadsheet you automate. No subscription.</li>
+      <li><strong>Lifetime license: $18 once</strong>. Unlimited rules, email notifications with your signature and attachments, documents from Google Doc, Word and PDF templates, and scheduled runs, on every spreadsheet you automate. No subscription.</li>
     </ul>
     <p>Upgrade from the sidebar (<strong>Upgrade</strong> on the Move tab) or from <strong>Extensions → Tab Transfer → Upgrade / license</strong>. Payment is handled by Stripe; your license activates on its own within a few seconds. Bought already but still see Free? Click <strong>Already bought?</strong> on the Move tab. The license belongs to the Google account you bought it with. 14-day refund: see the <a href="../../../terms/#pricing">terms</a>.</p>
 
-    <h2 id="owners">13. Owners &amp; editors</h2>
+    <h2 id="owners">14. Owners &amp; editors</h2>
     <ul>
       <li>The first person to save the setup becomes the <strong>owner</strong>. Only the owner can change the setup, run batch moves and edit emails. Only the owner needs a license.</li>
       <li><strong>Editors</strong> change statuses as usual; the owner's automation moves their rows and sends emails on the owner's behalf. When an editor opens Tab Transfer they see who the owner is and where each status goes.</li>
       <li>If the owner loses access to the file, an editor can <strong>take over</strong>. The previous owner is notified by email.</li>
     </ul>
 
-    <h2 id="large-runs">14. Large sheets &amp; limits</h2>
+    <h2 id="large-runs">15. Large sheets &amp; limits</h2>
     <p>Google stops any add-on run after 6 minutes. For very large batches Tab Transfer works to a budget: it stops starting new moves at 5 minutes and stops sending emails at 5½ minutes, then schedules itself to continue about a minute later, repeating until everything is done. A tab is never half-moved, and unsent emails are queued and sent first by the next run, so nothing is duplicated or lost. You'll see <em>Continued</em> entries in the Log.</p>
 
-    <h2 id="troubleshooting">15. Troubleshooting</h2>
+    <h2 id="troubleshooting">16. Troubleshooting</h2>
     <h3>Rows aren't moving</h3>
     <ul><li>Check the status column header is in row 1 and spelled the same on each tab.</li><li>Check the status has a destination in Rules and the tab still exists.</li><li>Make sure the tab is checked under Watched tabs.</li><li>Statuses set by formulas or forms need the schedule (or a manual move).</li><li>Open the Log for the last run and any message.</li></ul>
     <h3>"Only the automation owner can…"</h3>
     <p>Someone else saved the setup first. Ask the owner, or take over if they've left the file.</p>
     <h3>A column is empty in the destination</h3>
-    <p>The destination has no column with that header name, or the source cell was empty. Add a column with the same header.</p>
+    <p>The destination has no column with that header name, or the source cell was empty. Run the <a href="#column-check">column check</a> in the Rules tab: it lists every column that won't be moved. Add a column with the same header.</p>
+    <h3>A document wasn't created or has empty spots</h3>
+    <p>Open the Log: a failed document is listed with the reason, and the row still moves. Check that the template still exists in Drive, that the link column exists on the destination tab, that red placeholders on the document card are fixed, and for PDF forms that each field has a <strong>Fill with</strong> value. Rows that already have a link are skipped when <em>Skip rows that already have a file</em> is on.</p>
     <h3>Emails didn't arrive or have no signature</h3>
     <p>Send yourself a test, check spam, check the recipient column has valid addresses, check <strong>Add my signature</strong> is on for that notification, and look for a quota message in the Log.</p>
     <h3>The plan still says Free after buying</h3>
     <p>Click <strong>Already bought?</strong> on the Move tab. Make sure you bought with the same Google account you use in Sheets. Still stuck? Email support with your purchase email.</p>
 
-    <h2 id="uninstall">16. Turn off or uninstall</h2>
+    <h2 id="uninstall">17. Turn off or uninstall</h2>
     <p>To stop automation in one spreadsheet, turn off <em>Move instantly</em> and <em>Run on a schedule</em> in Behavior and save. To remove Tab Transfer completely, go to <strong>Extensions → Add-ons → Manage add-ons</strong>, open Tab Transfer's menu and choose <strong>Uninstall</strong>. You can also remove its access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>. Attachment files stay in your Drive folder until you delete them.</p>
     <p>Still need help? Email <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</p>
   </article>
