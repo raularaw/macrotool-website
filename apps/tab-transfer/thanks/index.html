@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Thank you | Tab Transfer lifetime license | macrotool</title>
-<meta name="description" content="Your Tab Transfer lifetime license purchase.">
+<title>Thank you | Tab Transfer purchase | macrotool</title>
+<meta name="description" content="Your Tab Transfer purchase.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://macrotool.app/apps/tab-transfer/thanks/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="macrotool">
-<meta property="og:title" content="Thank you | Tab Transfer lifetime license">
-<meta property="og:description" content="Your Tab Transfer lifetime license purchase.">
+<meta property="og:title" content="Thank you | Tab Transfer purchase">
+<meta property="og:description" content="Your Tab Transfer purchase.">
 <meta property="og:url" content="https://macrotool.app/apps/tab-transfer/thanks/">
 <meta property="og:image" content="https://macrotool.app/assets/img/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -78,7 +78,7 @@
   }
 
   if (!/^cs_(test|live)_[A-Za-z0-9]+$/.test(id)) {
-    show('ok', 'Thank you for your purchase!', 'Your lifetime license activates automatically for the Google account you used in Tab Transfer.');
+    show('ok', 'Thank you for your purchase!', 'Your plan activates automatically for the Google account you used in Tab Transfer.');
     return;
   }
   var tries = 0;
@@ -86,12 +86,12 @@
     fetch(API + '/v1/session?id=' + encodeURIComponent(id))
       .then(function (r) { return r.json(); })
       .then(function (d) {
-        if (d.paid) show('ok', 'You\u2019re all set. Thank you!', 'Your Tab Transfer lifetime license is active for', d.email);
+        if (d.paid) show('ok', 'You\u2019re all set. Thank you!', 'Tab Transfer ' + (d.plan === 'ultra' ? 'Ultra' : 'Pro') + (d.kind === 'upgrade' ? ' (upgraded from Pro)' : '') + ' is active for', d.email);
         else if (++tries < 10) setTimeout(check, 3000);
         else show('pending', 'Payment still processing', 'Some payment methods take a little longer. Your license activates as soon as Stripe confirms the payment. You can close this page.');
       })
       .catch(function () {
-        show('ok', 'Thank you for your purchase!', 'Your lifetime license activates automatically for the Google account you used in Tab Transfer. If it hasn\u2019t after a few minutes, email support@macrotool.app.');
+        show('ok', 'Thank you for your purchase!', 'Your plan activates automatically for the Google account you used in Tab Transfer. If it hasn\u2019t after a few minutes, email support@macrotool.app.');
       });
   })();
 })();
