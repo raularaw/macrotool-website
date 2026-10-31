@@ -453,6 +453,9 @@ a.app-card:hover .more svg { transform: translateX(4px); }
 .price-how b { color: var(--lime); font-weight: 600; }
 .price-foot { margin-top: 18px; color: var(--muted); font-size: .92rem; }
 @media (max-width: 760px) { .pricing { grid-template-columns: 1fr; } .price-card { padding: 26px; } }
+.pricing.three { grid-template-columns: repeat(3, 1fr); max-width: 1120px; }
+.pricing.three .price-card { padding: 28px; }
+@media (max-width: 980px) { .pricing.three { grid-template-columns: 1fr; max-width: 560px; } }
 
 /* ---------- thank-you page */
 .thanks { max-width: 640px; margin: 0 auto; text-align: center; padding: 40px 0 24px; }
