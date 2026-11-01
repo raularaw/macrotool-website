@@ -57,7 +57,7 @@
 <li><strong>Document templates you choose</strong>: the Google Doc, Word file or PDF you pick in Google Drive's file picker or upload in the add-on. Tab Transfer reads the template to find its placeholders or form fields and copies it for each moved row. Uploaded templates are saved in a <em>Tab Transfer templates</em> folder in your own Google Drive, and Word files are converted to a Google Doc there.</li>
 <li><strong>Documents it creates for your rows</strong>: copies of your template filled with the row's values, saved in a <em>Tab Transfer documents</em> folder in your own Google Drive. Only you can open them, unless you choose "Anyone with the link" for that document setup.</li>
 <li><strong>A Google-signed identity token</strong> (OpenID Connect), sent to our license service so it can confirm your Google account email address and look up your plan.</li>
-</ul><h2 id="use">How the information is used</h2><p>Information is used solely to provide the features you see in the Apps: reading statuses, moving rows, applying formatting, creating the triggers that run your automation, recording an activity log and sending the emails and creating the documents you configure. It is not used for any other purpose.</p><h2 id="storage">Where information is stored</h2><ul>
+</ul><h2 id="use">How the information is used</h2><p>Information is used solely to provide the features you see in the Apps: reading statuses, moving rows, applying formatting, creating the triggers that run your automation, recording an activity log and sending the emails and creating the documents you configure, plus one reminder email from your own account to yourself the day before your free trial ends. It is not used for any other purpose.</p><h2 id="storage">Where information is stored</h2><ul>
 <li><strong>Setup and activity log</strong>: stored with the spreadsheet itself (Apps Script document properties and spreadsheet developer metadata), visible to the add-on in that spreadsheet only.</li>
 <li><strong>Email signature</strong>: stored in your Apps Script user properties, tied to your Google account.</li>
 <li><strong>Attachments</strong>: stored as files in your own Google Drive (a <em>Tab Transfer attachments</em> folder); the notification keeps only each file's ID. Delete the files in Drive at any time.</li>
@@ -70,7 +70,7 @@
 <h2 id="licensing">Licensing and payments</h2>
 <p>Tab Transfer has a free plan and two one-time paid plans, Pro and Ultra. To know which one applies to you, the add-on sends a Google-signed identity token to our license service at <code>macrotool-api</code> (hosted on Cloudflare Workers). The service verifies the token with Google and stores:</p>
 <ul>
-<li>your <strong>Google account email address</strong>, the product name, when you first and last opened the add-on, and how many times the plan was checked;</li>
+<li>your <strong>Google account email address</strong>, the product name, when you first and last opened the add-on, on how many days the plan was checked, and when your free trial started;</li>
 <li>if you buy a license: the purchase date, amount and currency, the license status (active, refunded or disputed) and the Stripe identifiers of the payment (checkout session, payment and customer IDs).</li>
 </ul>
 <p>We use this only to provide the license you are entitled to, to restore it if you reinstall, to handle refunds and support, and to keep the accounting records the law requires. We do not use it for marketing unless you separately opt in, and we never sell it.</p>
