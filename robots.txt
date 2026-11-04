@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /apps/tab-transfer/thanks/
+
+Sitemap: https://macrotool.app/sitemap.xml
