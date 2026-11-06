@@ -68,7 +68,7 @@
     <p>In any spreadsheet you can edit, open the <strong>Extensions → Tab Transfer</strong> menu:</p>
     <ul>
       <li><strong>Open Tab Transfer</strong>: opens the sidebar on the right. It has five tabs: <strong>Move</strong>, <strong>Rules</strong>, <strong>Behavior</strong>, <strong>Email</strong> and <strong>Log</strong>.</li>
-      <li><strong>Emails &amp; documents</strong>: opens the wide editor for email notifications, documents and your signature (owner only, after the setup is saved).</li>
+      <li><strong>Emails &amp; documents</strong>: opens the wide editor for email notifications, documents and your signature (owner only, after the rules are set and saved).</li>
       <li><strong>Help &amp; guide</strong>: this page.</li>
       <li><strong>Upgrade / license</strong>: shows your license, or the upgrade options on the Free plan.</li>
       <li><strong>Contact support</strong>: email us at <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</li>
@@ -86,23 +86,27 @@
     <div class="callout lime"><p><strong>Tip:</strong> try your first setup on a copy of the spreadsheet (File → Make a copy).</p></div>
 
     <h2 id="rules">4. Rules</h2>
-    <p>The <strong>Rules</strong> tab decides which rows move and where. Changes apply after you press <strong>Save setup</strong> at the bottom of the sidebar. The first person to save becomes the <a href="#owners">automation owner</a>.</p>
-    <h3 id="status-column">Status column</h3>
-    <p>Pick the header whose value decides where a row goes. The list shows the headers found in row 1 of your tabs.</p>
-    <h3 id="watched-tabs">Watched tabs</h3>
-    <p>Rows are only moved <strong>out of</strong> checked tabs. Uncheck tabs that should never be scanned, such as a dashboard or an archive. Tabs without the status column are ignored automatically.</p>
-    <h3 id="statuses">Statuses &amp; destinations</h3>
+    <p>The <strong>Rules</strong> tab decides which rows move and where, in three steps. Each step opens when the one before it is set, and <strong>Change</strong> reopens a step later. Changes apply after you press <strong>Save setup</strong> at the bottom of the sidebar. The first person to save becomes the <a href="#owners">automation owner</a>.</p>
+    <p><strong>Behavior</strong> and <strong>Email</strong> open once the three steps are set, because they work on the rows your rules move. If you change saved rules later, Tab Transfer warns you first: email notifications and documents for tabs that no longer receive rows are turned off (kept, not deleted), and a timestamp column that becomes the status column is set to None.</p>
+    <h3 id="status-column">Step 1: Status column</h3>
+    <p>Pick the header whose value decides where a row goes, then click <strong>Set status column</strong>. The list shows the headers found in row 1 of your tabs.</p>
+    <h3 id="watched-tabs">Step 2: Watched tabs</h3>
+    <p>Check the tabs rows should move <strong>out of</strong>, then click <strong>Set watched tabs</strong>. Only tabs that have the status column are listed; with many tabs, use the search box and <em>All</em> / <em>None</em>. Leave out tabs that should never be scanned, such as a dashboard or an archive.</p>
+    <p>Each tab needs its headers in <strong>row 1</strong> only, with data starting in row 2. When you set the watched tabs, Tab Transfer reads their headers and runs the <a href="#column-check">column check</a>.</p>
+    <h3 id="statuses">Step 3: Statuses &amp; destinations</h3>
     <ul>
-      <li>Type a status and press <strong>Enter</strong>, then choose its destination tab. Matching ignores upper/lower case and extra spaces, so <code>approved </code> and <code>Approved</code> are the same status.</li>
-      <li><strong>Import from</strong> saves typing: <em>status dropdown</em> reads the dropdown options of the status column, <em>selected cells</em> uses the cells you've selected in the sheet, and <em>selected cell's dropdown</em> uses the dropdown of the selected cell.</li>
-      <li><strong>Auto-match tab names</strong> sends each status to the tab with the same name.</li>
-      <li>A status without a destination is ignored. Rows with it stay where they are.</li>
-      <li>The Free plan includes <strong>3 rules</strong>; <a href="#plans">Pro and Ultra</a> remove the limit.</li>
+      <li>Each watched tab has a row with a button. Click it to choose the statuses that send rows to that tab, then click <strong>Set</strong>. The button shows how many statuses are chosen, and the names appear under the row. A tab can receive several statuses, for example <em>Paid</em> and <em>Lost</em> into <em>Closed</em>.</li>
+      <li>The list of statuses comes from the status column: its dropdown options and the values already used in your watched tabs. Type a new one in <em>Add a status</em>, or import it from the <em>selected cells</em> or the <em>selected cell's dropdown</em>. Matching ignores upper/lower case and extra spaces, so <code>approved </code> and <code>Approved</code> are the same status.</li>
+      <li>Each status goes to one tab. Choosing a status that already goes elsewhere moves it to this tab.</li>
+      <li><strong>Add a destination tab</strong> adds a tab that isn't watched, such as an archive, so it can receive rows.</li>
+      <li><strong>Match statuses to tab names</strong> sends each unassigned status to the tab with the same name.</li>
+      <li>A status that isn't chosen for any tab is ignored. Rows with it stay where they are.</li>
+      <li>The Free plan moves rows for <strong>3 statuses</strong>; <a href="#plans">Pro and Ultra</a> remove the limit, and so does the free trial.</li>
     </ul>
     <h3 id="column-check">Column check</h3>
     <p>Columns are matched by their row 1 header. If a column exists on the source tab but not on the destination, its data is <strong>not moved</strong>, and it's lost when the row leaves the source tab (deleted with the row, or cleared if you keep the row). The column check finds these before it happens.</p>
     <ul>
-      <li>Click <strong>Check columns</strong> at the bottom of the Rules tab. It reads the current headers of every watched tab and every destination tab.</li>
+      <li>It runs when you set the watched tabs and updates as you choose statuses. After fixing a header in the sheet, click <strong>Re-scan columns</strong> at the bottom of the Rules tab to read the current headers again.</li>
       <li>You get one card per destination tab, in the order of your rules. A red number shows how many columns would be lost, a red <strong>!</strong> means the tab no longer exists, and a green check means every column matches.</li>
       <li>Click a card to see each route into that tab (for example <em>Inbox → Approved</em>): the missing columns, headers that look alike (<code>E-mail</code> vs <code>Email</code>), columns that only exist on the destination, and a missing timestamp or status column.</li>
       <li>The Rules tab shows a red badge with the number of routes that would lose data. When you press <strong>Save setup</strong> with such routes, Tab Transfer asks first: <em>Review columns</em> or <em>Save anyway</em>.</li>
@@ -210,7 +214,7 @@
 
     <h2 id="plans">13. Plans &amp; license</h2>
     <p id="trial"><strong>15-day free trial.</strong> When you save your first setup, every feature (Ultra) is unlocked for 15 days, once per Google account. The plan card on the Move tab counts down the days, and you get one reminder email, from your own account to yourself, during the last 24 hours of your trial (the day before it ends). Buying during the trial simply replaces it.</p>
-    <p><strong>When the trial ends</strong>, nothing is deleted. The sidebar asks which 3 rules keep running (you can change this later from the Rules tab); the other rules are shown as paused. Email notifications, schedules and documents keep their settings and show <em>Paused</em>. Rows whose status points to a paused rule stay where they are. Buy Pro or Ultra and everything runs again exactly as you set it up.</p>
+    <p><strong>When the trial ends</strong>, nothing is deleted. The sidebar asks which 3 statuses keep moving rows (you can change this later from the Rules tab); the other rules are shown as paused. Email notifications, schedules and documents keep their settings and show <em>Paused</em>. Rows whose status points to a paused rule stay where they are. Buy Pro or Ultra and everything runs again exactly as you set it up.</p>
     <ul>
       <li><strong>Free, forever</strong>: 3 status rules, instant and manual moves, and everything in <a href="#formulas">section 8</a>.</li>
       <li><strong>Pro: $18.99 once</strong>. Unlimited rules, scheduled runs, and email notifications with your signature and attachments.</li>
