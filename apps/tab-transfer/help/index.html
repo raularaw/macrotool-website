@@ -229,6 +229,13 @@
       <li><strong>Editors</strong> change statuses as usual; the owner's automation moves their rows and sends emails on the owner's behalf. When an editor opens Tab Transfer they see who the owner is and where each status goes.</li>
       <li>If the owner loses access to the file, an editor can <strong>take over</strong>. The previous owner is notified by email.</li>
     </ul>
+    <h3 id="copies">Copied spreadsheets</h3>
+    <p>When someone makes a copy of an automated spreadsheet (File → Make a copy), the copy brings the Tab Transfer setup along, but nothing runs in it. The first time they open Tab Transfer in the copy, they choose:</p>
+    <ul>
+      <li><strong>Start fresh</strong>: removes the copied setup and its activity log, so they set up their own rules.</li>
+      <li><strong>Keep the copied setup</strong>: they become the owner of the copy. Rules, behavior and emails stay. Document templates and email attachments are cleared, because those files are in the original owner's Drive; they choose their own in <a href="#documents">Emails &amp; documents</a>.</li>
+    </ul>
+    <p>The original spreadsheet and its automation are not affected either way.</p>
 
     <h2 id="large-runs">15. Large sheets &amp; limits</h2>
     <p>Google stops any add-on run after 6 minutes. For very large batches Tab Transfer works to a budget: it stops starting new moves at 5 minutes and stops sending emails at 5½ minutes, then schedules itself to continue about a minute later, repeating until everything is done. A tab is never half-moved, and unsent emails are queued and sent first by the next run, so nothing is duplicated or lost. You'll see <em>Continued</em> entries in the Log.</p>
