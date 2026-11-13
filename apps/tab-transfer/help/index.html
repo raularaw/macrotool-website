@@ -68,7 +68,7 @@
     <p>In any spreadsheet you can edit, open the <strong>Extensions → Tab Transfer</strong> menu:</p>
     <ul>
       <li><strong>Open Tab Transfer</strong>: opens the sidebar on the right. It has five tabs: <strong>Move</strong>, <strong>Rules</strong>, <strong>Behavior</strong>, <strong>Email</strong> and <strong>Log</strong>.</li>
-      <li><strong>Emails &amp; documents</strong>: opens the wide editor for email notifications, documents and your signature (owner only, after the rules are set and saved).</li>
+      <li><strong>Emails &amp; documents</strong>: opens the wide editor for email notifications, documents and your signature (owner only, after all three Rules steps are set and saved).</li>
       <li><strong>Help &amp; guide</strong>: this page.</li>
       <li><strong>Upgrade / license</strong>: shows your license, or the upgrade options on the Free plan.</li>
       <li><strong>Contact support</strong>: email us at <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</li>
@@ -102,11 +102,13 @@
       <li><strong>Match statuses to tab names</strong> sends each unassigned status to the tab with the same name.</li>
       <li>A status that isn't chosen for any tab is ignored. Rows with it stay where they are.</li>
       <li>The Free plan moves rows for <strong>3 statuses</strong>; <a href="#plans">Pro and Ultra</a> remove the limit, and so does the free trial.</li>
+      <li>When every tab has its statuses, click <strong>Set statuses &amp; destinations</strong>. Tab Transfer scans the columns and shows the <a href="#column-check">Column check</a>. Click <strong>Change</strong> to edit them again.</li>
+      <li>Behavior and Emails &amp; documents open once all three steps are set. This includes the <strong>Emails &amp; documents</strong> menu item: while a step is open in the sidebar, it asks you to set your rules first.</li>
     </ul>
     <h3 id="column-check">Column check</h3>
     <p>Columns are matched by their row 1 header. If a column exists on the source tab but not on the destination, its data is <strong>not moved</strong>, and it's lost when the row leaves the source tab (deleted with the row, or cleared if you keep the row). The column check finds these before it happens.</p>
     <ul>
-      <li>It runs when you set the watched tabs and updates as you choose statuses. After fixing a header in the sheet, click <strong>Re-scan columns</strong> at the bottom of the Rules tab to read the current headers again.</li>
+      <li>It appears and runs when you set the statuses and destinations (step 3). After fixing a header in the sheet, click <strong>Re-scan columns</strong> at the bottom of the Rules tab to read the current headers again.</li>
       <li>You get one card per destination tab, in the order of your rules. A red number shows how many columns would be lost, a red <strong>!</strong> means the tab no longer exists, and a green check means every column matches.</li>
       <li>Click a card to see each route into that tab (for example <em>Inbox → Approved</em>): the missing columns, headers that look alike (<code>E-mail</code> vs <code>Email</code>), columns that only exist on the destination, and a missing timestamp or status column.</li>
       <li>The Rules tab shows a red badge with the number of routes that would lose data. When you press <strong>Save setup</strong> with such routes, Tab Transfer asks first: <em>Review columns</em> or <em>Save anyway</em>.</li>
