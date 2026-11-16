@@ -34,6 +34,8 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+/* keep the page from scrolling sideways on phones (clip keeps the sticky header working) */
+html, body { overflow-x: clip; }
 img { max-width: 100%; display: block; }
 a { color: var(--green); text-underline-offset: 3px; }
 a:hover { color: var(--green-2); }
@@ -466,3 +468,64 @@ a.app-card:hover .more svg { transform: translateX(4px); }
 .thanks ol { text-align: left; margin: 28px auto 0; max-width: 480px; padding-left: 1.2em; }
 .thanks ol li { margin: .45em 0; }
 .thanks .who { font-family: var(--font-mono); font-size: .95rem; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 2px 8px; }
+
+/* ---------- grid children may shrink (stops the home card overflowing on phones) */
+.apps-grid > *, .app-card.featured > * { min-width: 0; }
+.app-card.featured .sheet { max-width: 100%; overflow: hidden; }
+.app-card.featured .sheet table { width: 100%; table-layout: fixed; }
+.app-card.featured .sheet td, .app-card.featured .sheet th { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pay-line { font-size: .95rem; margin: -4px 0 0; }
+.app-card.featured .pay-line { color: #e8efe9; }
+.app-card.featured .pay-line b { color: var(--lime); }
+
+/* ---------- advantage strip in the product hero */
+.edge-strip { list-style: none; margin: 0 0 26px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.edge-strip li { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line-2); font-size: .86rem; font-weight: 500; color: var(--ink-2); }
+.edge-strip li::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--green-2); flex: none; }
+.edge-strip li.hot { background: var(--lime); border-color: var(--lime); color: var(--ink); }
+.edge-strip li.hot::before { background: var(--ink); }
+.edge-strip b { font-weight: 700; }
+
+/* ---------- comparison table */
+.compare-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+.compare { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.compare th, .compare td { text-align: left; padding: 15px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.compare tbody tr:last-child th, .compare tbody tr:last-child td { border-bottom: 0; }
+.compare thead th { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--ink-2); background: var(--paper); }
+.compare thead th.us { background: var(--ink); color: #fff; }
+.compare tbody th { font-weight: 600; color: var(--ink); width: 26%; }
+.compare td { color: var(--muted); }
+.compare td.us { background: #f3fbe2; color: var(--ink); }
+.compare td.us b { color: var(--green); }
+.compare svg { width: 16px; height: 16px; vertical-align: -3px; margin-right: 2px; }
+.compare svg.ok { color: var(--green-2); }
+.compare svg.no { color: #b0432a; }
+.compare .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.compare-note { margin-top: 14px; color: var(--muted); font-size: .85rem; }
+@media (max-width: 760px) {
+  .compare thead { display: none; }
+  .compare, .compare tbody, .compare tr, .compare th, .compare td { display: block; width: auto; }
+  .compare tbody tr { border-bottom: 1px solid var(--line); padding: 14px 16px; }
+  .compare tbody tr:last-child { border-bottom: 0; }
+  .compare tbody th, .compare td { border: 0; padding: 0; }
+  .compare tbody th { margin-bottom: 8px; font-size: 1rem; width: auto; }
+  .compare td { display: grid; grid-template-columns: 112px 1fr; gap: 10px; padding: 6px 0; font-size: .9rem; }
+  .compare td::before { content: attr(data-l); font-weight: 600; font-size: .78rem; color: var(--ink-2); padding-top: 2px; }
+  .compare td.us { background: #f3fbe2; border-radius: 10px; padding: 8px 10px; margin: 0 -10px 4px; }
+}
+
+/* ---------- pay-once banner */
+.pay-once { display: flex; gap: 16px; align-items: center; max-width: 1120px; margin: 0 0 30px; padding: 18px 22px; border-radius: 16px; background: var(--lime); color: var(--ink); }
+.pay-once .po-ico { width: 44px; height: 44px; border-radius: 12px; background: var(--ink); color: var(--lime); display: grid; place-items: center; flex: none; }
+.pay-once .po-ico svg { width: 22px; height: 22px; }
+.pay-once b { display: block; font-family: var(--font-display); font-size: 1.15rem; line-height: 1.25; }
+.pay-once span:not(.po-ico) { display: block; font-size: .95rem; color: var(--ink-2); margin-top: 2px; }
+@media (max-width: 600px) { .pay-once { align-items: flex-start; padding: 16px; } }
+.price-how.light { background: var(--surface); border: 1px solid var(--line); color: var(--ink-2); }
+.price-how.light b { color: var(--green); }
+@media (max-width: 600px) {
+  .app-card.featured { padding: 22px; }
+  .app-card.featured .sheet td, .app-card.featured .sheet th { padding-left: 8px; padding-right: 6px; }
+  .app-card.featured .sheet td:first-child, .app-card.featured .sheet th:first-child { width: 30px; }
+  .app-card.featured .sheet .pill { padding: 2px 7px; font-size: .7rem; }
+}
