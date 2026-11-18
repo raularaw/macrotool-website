@@ -148,7 +148,7 @@
       }
       if (ev.name === 'checkout.completed') {
         var id = (ev.data && ev.data.transaction_id) || txn;
-        location.href = THANKS + '?txn=' + encodeURIComponent(id);
+        location.href = THANKS + '?txn=' + encodeURIComponent(id) + (env === 'sandbox' ? '&env=sandbox' : '');
       }
       if (ev.name === 'checkout.error') say('Something went wrong', 'No payment was taken. Please try again from Tab Transfer, or email support@macrotool.app.');
     }
