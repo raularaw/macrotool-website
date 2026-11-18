@@ -33,55 +33,138 @@
   </nav>
 </header>
 <main id="main">
+<style>
+  .co { display: grid; grid-template-columns: 300px minmax(0, 1fr) 230px; gap: 28px; align-items: start; }
+  .co-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .co h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0 0 6px; }
+  .co-sum dl { margin: 18px 0 0; display: grid; grid-template-columns: 1fr auto; gap: 8px 0; font-size: .95rem; }
+  .co-sum dd { padding-left: 12px; }
+  .co-sum dt { color: var(--muted); }
+  .co-sum dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  .co-sum .total { font-weight: 700; color: var(--ink); border-top: 1px solid var(--line); padding-top: 10px; }
+  .co-item { margin-top: 14px; font-weight: 600; }
+  .co-item small { display: block; font-weight: 400; color: var(--muted); }
+  .co-frame { min-height: 460px; }
+  .co-msg { color: var(--muted); }
+  .co-qr { text-align: center; }
+  .co-qr h2 { font-size: 1.05rem; margin: 0 0 4px; }
+  .co-qr p { color: var(--muted); font-size: .88rem; margin: 0 0 14px; }
+  .co-qr #qr { display: inline-block; padding: 10px; background: #fff; border-radius: 10px; border: 1px solid var(--line); }
+  .co-qr #qr img, .co-qr #qr canvas { display: block; }
+  .co-fine { margin-top: 28px; color: var(--muted); font-size: .85rem; max-width: 70ch; }
+  @media (max-width: 1100px) { .co { grid-template-columns: 280px minmax(0, 1fr); } .co-qr { display: none; } }
+  @media (max-width: 760px) { .co { grid-template-columns: 1fr; } }
+</style>
 <section class="section">
   <div class="wrap">
-    <div id="thanks" class="thanks pending" aria-live="polite">
-      <div class="state-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg></div>
-      <h1 id="t-title">Opening secure checkout…</h1>
-      <p id="t-text" style="color:var(--muted)">The payment window opens on this page in a moment.</p>
-      <div class="hero-actions" style="justify-content:center;margin-top:32px">
-        <a class="btn btn-ghost" href="../apps/tab-transfer/#pricing">Back to pricing</a>
-        <a class="btn btn-ghost" href="../support/">Contact support</a>
+    <div class="co">
+      <div class="co-card co-sum" aria-live="polite">
+        <h1 id="t-title">Checkout</h1>
+        <p id="t-text" class="co-msg">Loading secure checkout…</p>
+        <div id="sum" hidden>
+          <div class="co-item"><span id="s-name"></span><small id="s-price"></small></div>
+          <dl>
+            <dt>Subtotal</dt><dd id="s-sub"></dd>
+            <dt>Tax</dt><dd id="s-tax"></dd>
+            <dt class="total">Total today</dt><dd class="total" id="s-total"></dd>
+          </dl>
+        </div>
+        <div class="hero-actions" style="margin-top:22px">
+          <a class="btn btn-ghost" href="../apps/tab-transfer/#pricing">Back to pricing</a>
+        </div>
       </div>
-      <p style="margin-top:28px;color:var(--muted);font-size:.92rem">Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns. Taxes are calculated for your country at checkout.</p>
+      <div class="co-frame checkout-frame"></div>
+      <div class="co-card co-qr" id="qr-card" hidden>
+        <h2>Pay on your phone</h2>
+        <p>Scan to finish this purchase on your phone with Apple Pay, Google Pay, PayPal or a card.</p>
+        <div id="qr" aria-label="QR code that opens this checkout on your phone"></div>
+      </div>
     </div>
+    <p class="co-fine">Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns. Taxes are calculated for your country at checkout. <a href="../refunds/">Refund Policy</a> &middot; <a href="../support/">Contact support</a></p>
   </div>
 </section>
+<script src="../assets/js/qrcode.min.js"></script>
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
 (function () {
   // Public Paddle.js client-side tokens (safe to publish; they can only open checkouts).
   var TOKENS = { live: 'live_4203a94ff4bc2932bb79953df84', sandbox: '' };
   var THANKS = '../apps/tab-transfer/thanks/';
+  var fullUrl = location.href;                       // the QR opens this same checkout on a phone
   var q = new URLSearchParams(location.search);
+  var txn = q.get('_ptxn') || '';
   var env = q.get('env') === 'sandbox' ? 'sandbox' : 'live';
-  var title = document.getElementById('t-title');
-  var text = document.getElementById('t-text');
-  function say(t, m) { title.textContent = t; text.textContent = m; }
+  var $ = function (id) { return document.getElementById(id); };
+  function say(t, m) { $('t-title').textContent = t; $('t-text').textContent = m; $('t-text').hidden = !m; }
 
-  if (!q.get('_ptxn')) {
-    say('Buy Tab Transfer from the add-on', 'Purchases start inside Tab Transfer (Extensions \u2192 Tab Transfer \u2192 Upgrade / license), so your license goes to the right Google account.');
+  if (!/^txn_[a-z0-9]{10,40}$/.test(txn)) {
+    say('Buy Tab Transfer from the add-on', 'Purchases start inside Tab Transfer (Extensions → Tab Transfer → Upgrade / license), so your license goes to the right Google account.');
     return;
   }
   if (!window.Paddle || !TOKENS[env]) {
     say('Checkout could not load', 'Please try again in a minute, or email support@macrotool.app.');
     return;
   }
+
+  // Phone QR (shown on wide screens only; on a phone you are already there).
+  try {
+    if (window.QRCode) {
+      new QRCode($('qr'), { text: fullUrl, width: 176, height: 176, correctLevel: QRCode.CorrectLevel.M });
+      $('qr-card').hidden = false;
+    }
+  } catch (e) { /* the QR is optional */ }
+
+  // Open the checkout ourselves (inline, beside the summary), so remove _ptxn to stop Paddle's auto-open.
+  q.delete('_ptxn');
+  try { history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '')); } catch (e) {}
+
+  function money(v, cur) {
+    var n = Number(v);
+    if (!isFinite(n)) return '';
+    try { return new Intl.NumberFormat('en-US', { style: 'currency', currency: cur || 'USD' }).format(n); }
+    catch (e) { return (cur || '') + ' ' + n.toFixed(2); }
+  }
+  function summary(d) {
+    if (!d) return;
+    var cur = d.currency_code;
+    var item = (d.items || [])[0] || {};
+    var t = d.totals || {};
+    $('s-name').textContent = (item.product && item.product.name) || 'Tab Transfer';
+    $('s-price').textContent = item.price_name || 'One-time license';
+    $('s-sub').textContent = money(t.subtotal, cur);
+    $('s-tax').textContent = money(t.tax, cur);
+    $('s-total').textContent = money(t.total, cur);
+    $('sum').hidden = false;
+  }
+
   if (env === 'sandbox') Paddle.Environment.set('sandbox');
   Paddle.Initialize({
     token: TOKENS[env],
-    // allowLogout false: the email is the Google account the license belongs to, so it can't be changed here.
-    // showAddDiscounts false: no discount codes are offered.
-    checkout: { settings: { displayMode: 'overlay', theme: 'light', locale: 'en', allowLogout: false, showAddDiscounts: false } },
     eventCallback: function (ev) {
       if (!ev || !ev.name) return;
-      if (ev.name === 'checkout.loaded') say('Complete your purchase', 'Enter your details in the secure Paddle window.');
-      if (ev.name === 'checkout.completed') {
-        var id = ev.data && ev.data.transaction_id;
-        location.href = THANKS + (id ? '?txn=' + encodeURIComponent(id) : '');
+      if (ev.name === 'checkout.loaded' || ev.name === 'checkout.updated' || ev.name === 'checkout.customer.updated') {
+        say('Checkout', '');
+        summary(ev.data);
       }
-      if (ev.name === 'checkout.closed') say('Checkout closed', 'No payment was taken. You can start again from Tab Transfer whenever you like.');
+      if (ev.name === 'checkout.completed') {
+        var id = (ev.data && ev.data.transaction_id) || txn;
+        location.href = THANKS + '?txn=' + encodeURIComponent(id);
+      }
       if (ev.name === 'checkout.error') say('Something went wrong', 'No payment was taken. Please try again from Tab Transfer, or email support@macrotool.app.');
+    }
+  });
+  Paddle.Checkout.open({
+    transactionId: txn,
+    settings: {
+      displayMode: 'inline',
+      variant: 'one-page',
+      frameTarget: 'checkout-frame',
+      frameInitialHeight: 460,
+      frameStyle: 'width: 100%; min-width: 312px; background-color: transparent; border: none;',
+      theme: 'light',
+      locale: 'en',
+      allowLogout: false,          // the email is the Google account the license belongs to
+      showAddDiscounts: false      // no discount codes are offered
     }
   });
 })();
