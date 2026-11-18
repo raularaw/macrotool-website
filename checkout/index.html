@@ -70,7 +70,9 @@
   if (env === 'sandbox') Paddle.Environment.set('sandbox');
   Paddle.Initialize({
     token: TOKENS[env],
-    checkout: { settings: { displayMode: 'overlay', theme: 'light', locale: 'en' } },
+    // allowLogout false: the email is the Google account the license belongs to, so it can't be changed here.
+    // showAddDiscounts false: no discount codes are offered.
+    checkout: { settings: { displayMode: 'overlay', theme: 'light', locale: 'en', allowLogout: false, showAddDiscounts: false } },
     eventCallback: function (ev) {
       if (!ev || !ev.name) return;
       if (ev.name === 'checkout.loaded') say('Complete your purchase', 'Enter your details in the secure Paddle window.');
