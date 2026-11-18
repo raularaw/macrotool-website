@@ -61,7 +61,9 @@
   var steps = document.getElementById('t-steps');
   var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>';
   var ICON_ERR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>';
-  var id = new URLSearchParams(location.search).get('txn') || '';
+  var qs = new URLSearchParams(location.search);
+  var id = qs.get('txn') || '';
+  var sandbox = qs.get('env') === 'sandbox';
 
   function show(state, t, msg, email) {
     box.className = 'thanks ' + state;
@@ -83,7 +85,7 @@
   }
   var tries = 0;
   (function check() {
-    fetch(API + '/v1/session?id=' + encodeURIComponent(id))
+    fetch(API + '/v1/session?id=' + encodeURIComponent(id) + (sandbox ? '&env=sandbox' : ''))
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (d.paid) show('ok', 'You\u2019re all set. Thank you!', 'Tab Transfer ' + (d.plan === 'ultra' ? 'Ultra' : 'Pro') + (d.kind === 'upgrade' ? ' (upgraded from Pro)' : '') + ' is active for', d.email);
