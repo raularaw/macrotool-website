@@ -74,7 +74,7 @@
 <li>Administrative access to the license service, Stripe and the Google Cloud project is limited to the developer's accounts, each protected by two-step verification.</li>
 </ul>
 <h2 id="licensing">Licensing and payments</h2>
-<p>Tab Transfer has a free plan and two one-time paid plans, Pro and Ultra. To know which one applies to you, the add-on sends a Google-signed identity token to our license service at <code>macrotool-api</code> (hosted on Cloudflare Workers). The service verifies the token with Google and stores:</p>
+<p>Tab Transfer has a free plan and two one-time paid plans, Pro and Ultra. To know which one applies to you, the add-on sends a Google-signed identity token to our license service at <code>api.macrotool.app</code> (hosted on Cloudflare Workers). The service verifies the token with Google and stores:</p>
 <ul>
 <li>your <strong>Google account email address</strong>, the product name, when you first and last opened the add-on, on how many days the plan was checked, and when your free trial started;</li>
 <li>if you buy a license: the purchase date, amount and currency, the license status (active, refunded or disputed) and the Stripe identifiers of the payment (checkout session, payment and customer IDs).</li>
