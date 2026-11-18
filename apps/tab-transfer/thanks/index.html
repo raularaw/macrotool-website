@@ -48,7 +48,7 @@
         <a class="btn btn-primary" href="../help/">Guide</a>
         <a class="btn btn-ghost" href="../../../support/">Contact support</a>
       </div>
-      <p style="margin-top:28px;color:var(--muted);font-size:.92rem">A receipt from Stripe is on its way to your inbox. Not happy? You can get a full refund within 14 days. Just <a href="mailto:support@macrotool.app">email support</a>.</p>
+      <p style="margin-top:28px;color:var(--muted);font-size:.92rem">A receipt from Paddle, our reseller, is on its way to your inbox. Not happy? You can get a full refund within 14 days (<a href="../../../refunds/">Refund Policy</a>). Just <a href="mailto:support@macrotool.app">email support</a>.</p>
     </div>
   </div>
 </section>
@@ -61,7 +61,7 @@
   var steps = document.getElementById('t-steps');
   var ICON_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>';
   var ICON_ERR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>';
-  var id = new URLSearchParams(location.search).get('session_id') || '';
+  var id = new URLSearchParams(location.search).get('txn') || '';
 
   function show(state, t, msg, email) {
     box.className = 'thanks ' + state;
@@ -77,7 +77,7 @@
     steps.hidden = state !== 'ok';
   }
 
-  if (!/^cs_(test|live)_[A-Za-z0-9]+$/.test(id)) {
+  if (!/^txn_[a-z0-9]{10,40}$/.test(id)) {
     show('ok', 'Thank you for your purchase!', 'Your plan activates automatically for the Google account you used in Tab Transfer.');
     return;
   }
@@ -88,7 +88,7 @@
       .then(function (d) {
         if (d.paid) show('ok', 'You\u2019re all set. Thank you!', 'Tab Transfer ' + (d.plan === 'ultra' ? 'Ultra' : 'Pro') + (d.kind === 'upgrade' ? ' (upgraded from Pro)' : '') + ' is active for', d.email);
         else if (++tries < 10) setTimeout(check, 3000);
-        else show('pending', 'Payment still processing', 'Some payment methods take a little longer. Your license activates as soon as Stripe confirms the payment. You can close this page.');
+        else show('pending', 'Payment still processing', 'Some payment methods take a little longer. Your license activates as soon as Paddle confirms the payment. You can close this page.');
       })
       .catch(function () {
         show('ok', 'Thank you for your purchase!', 'Your plan activates automatically for the Google account you used in Tab Transfer. If it hasn\u2019t after a few minutes, email support@macrotool.app.');

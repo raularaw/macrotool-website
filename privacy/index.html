@@ -37,12 +37,12 @@
   <article class="doc">
     
     <h1>Privacy Policy</h1>
-    <p class="meta">Last updated: November 4, 2026 (free trial reminder, data protection and retention of documents)</p>
+    <p class="meta">Last updated: November 18, 2026 (payments by Paddle as Merchant of Record)</p>
     <h2 id="who">Who we are</h2><p>macrotool ("macrotool", "we", "us") is an independent software developer operated by Raul Araw. We publish add-ons for Google Workspace, including <strong>Tab Transfer</strong> for Google Sheets (together, the "Apps"). This policy explains what information the Apps access, how it is used, and the choices you have. Contact: <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</p><h2 id="summary">The short version</h2><ul>
 <li>The Apps run inside Google Apps Script, under your own Google account.</li>
 <li>Your spreadsheet content, the emails you send, your signature and any files you attach <strong>never leave Google</strong>. We have no access to them.</li>
 <li>Our only server is a small license service. It receives your <strong>Google account email address</strong> (verified by Google) to tell which plan you have (Free, trial, Pro or Ultra), plus the dates you first and last opened the add-on, how many days it checked your plan and when your free trial started. Nothing from your spreadsheets, documents or emails. See <a href="#licensing">Licensing and payments</a>.</li>
-<li>Payments are handled by <strong>Stripe</strong>; we never see your card details.</li>
+<li>Payments are handled by <strong>Paddle</strong>, our reseller and Merchant of Record; we never see your card details.</li>
 <li>We do <strong>not</strong> sell, rent or share your data, and we do not use it for advertising.</li>
 <li>Settings are stored inside your own Google file or Google account.</li>
 </ul><h2 id="data">Information the Apps access</h2>
@@ -69,22 +69,22 @@
 <p>Spreadsheet content, settings, signatures, attachments, templates, documents and emails stay within Google's infrastructure, protected by Google's security. macrotool does not have access to your spreadsheets or stored settings.</p>
 <h2 id="security">How we protect your data</h2><ul>
 <li>The add-on talks to the license service only over HTTPS (TLS). The service accepts a Google identity token, checks its signature with Google, and never receives spreadsheet content.</li>
-<li>License records are stored in Cloudflare D1, which encrypts data at rest. Card details are handled entirely by Stripe and never reach us.</li>
-<li>Payment events from Stripe are accepted only with a valid Stripe signature, and prices are set on the server, not by the add-on.</li>
-<li>Administrative access to the license service, Stripe and the Google Cloud project is limited to the developer's accounts, each protected by two-step verification.</li>
+<li>License records are stored in Cloudflare D1, which encrypts data at rest. Card details are handled entirely by Paddle and never reach us.</li>
+<li>Payment notifications from Paddle are accepted only with a valid Paddle signature, and prices are set on the server, not by the add-on.</li>
+<li>Administrative access to the license service, Paddle and the Google Cloud project is limited to the developer's accounts, each protected by two-step verification.</li>
 </ul>
 <h2 id="licensing">Licensing and payments</h2>
 <p>Tab Transfer has a free plan and two one-time paid plans, Pro and Ultra. To know which one applies to you, the add-on sends a Google-signed identity token to our license service at <code>api.macrotool.app</code> (hosted on Cloudflare Workers). The service verifies the token with Google and stores:</p>
 <ul>
 <li>your <strong>Google account email address</strong>, the product name, when you first and last opened the add-on, on how many days the plan was checked, and when your free trial started;</li>
-<li>if you buy a license: the purchase date, amount and currency, the license status (active, refunded or disputed) and the Stripe identifiers of the payment (checkout session, payment and customer IDs).</li>
+<li>if you buy a license: the purchase date, amount and currency, the license status (active, refunded or disputed) and the Paddle identifiers of the purchase (transaction and customer IDs).</li>
 </ul>
 <p>We use this only to provide the license you are entitled to, to restore it if you reinstall, to handle refunds and support, and to keep the accounting records the law requires. We do not use it for marketing unless you separately opt in, and we never sell it.</p>
-<p><strong>Payments.</strong> When you upgrade, you pay on a Stripe-hosted checkout page. Stripe collects your payment details and billing information directly and processes them under the <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy Policy</a>. We receive only a confirmation of the payment, your email address and the amount, never your card number.</p><h2 id="sharing">Sharing and disclosure</h2><p>We do not sell, trade or rent your information, and we do not use third-party analytics or advertising in the Apps. Your information is processed only by these service providers, each for the purpose stated:</p>
+<p><strong>Payments.</strong> When you upgrade, you pay in a checkout window provided by Paddle.com, our online reseller and Merchant of Record. Paddle collects your payment details, billing address and tax information directly, sends your receipt and processes this data as an independent controller under the <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">Paddle Privacy Policy</a>. Paddle tells us the email you used at checkout, your country and the transaction details; we never receive your card number.</p><h2 id="sharing">Sharing and disclosure</h2><p>We do not sell, trade or rent your information, and we do not use third-party analytics or advertising in the Apps. Your information is processed only by these service providers, each for the purpose stated:</p>
 <ul>
 <li><strong>Google</strong>: runs the add-on, stores your settings and sends your emails (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>).</li>
 <li><strong>Cloudflare</strong>: hosts the license service and its database (your email address and license records only) (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a>).</li>
-<li><strong>Stripe</strong>: processes payments for Pro and Ultra (<a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe Privacy Policy</a>).</li>
+<li><strong>Paddle</strong>: our reseller and Merchant of Record; sells Pro and Ultra, takes payment, calculates tax and issues receipts (<a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">Paddle Privacy Policy</a>).</li>
 </ul>
 <p>We may also disclose information if required by law, or as part of a merger or acquisition with notice to you.</p><h2 id="limited">Google API Services User Data Policy</h2><div class="callout"><p>macrotool's use and transfer of information received from Google APIs to any other app will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p></div>
 <p>In particular: we only use Google user data to provide and improve user-facing features of the Apps; we do not transfer it except as needed to provide those features, to comply with law, or as part of a merger or acquisition with notice to you; we do not use it for advertising; and no human reads it unless you give explicit permission (for example when you share a spreadsheet with us for support), it is needed for security purposes, or it is required by law.</p><h2 id="retention">Retention and deletion</h2><p>Settings and the activity log remain in your spreadsheet until you remove them or delete the file. The activity log keeps only the 25 most recent runs. To remove access entirely, uninstall the add-on (Extensions → Add-ons → Manage add-ons) and revoke it at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>. Any triggers the add-on created stop when access is revoked. Attachment files, document templates and the documents the add-on creates stay in your Drive until you delete them; uninstalling does not delete them.</p>
@@ -101,7 +101,7 @@
       </div>
       <div><h4>Apps</h4><ul><li><a href="../apps/tab-transfer/">Tab Transfer</a></li><li><a href="../apps/tab-transfer/help/">Tab Transfer guide</a></li><li><a href="../index.html#apps">All apps</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="../index.html#developer">Developer</a></li><li><a href="https://www.upwork.com/freelancers/~010acf1b6183b365bc?mp_source=share" target="_blank" rel="noopener">Upwork profile</a></li><li><a href="https://www.linkedin.com/in/raularaw/" target="_blank" rel="noopener me">LinkedIn</a></li><li><a href="../support/">Support</a></li></ul></div>
-      <div><h4>Legal</h4><ul><li><a href="../privacy/">Privacy Policy</a></li><li><a href="../terms/">Terms of Service</a></li><li><a href="mailto:support@macrotool.app">support@macrotool.app</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="../privacy/">Privacy Policy</a></li><li><a href="../terms/">Terms of Service</a></li><li><a href="../refunds/">Refund Policy</a></li><li><a href="mailto:support@macrotool.app">support@macrotool.app</a></li></ul></div>
     </div>
     <div class="foot-bottom"><span>&copy; <span data-year>2026</span> macrotool.app &middot; Raul Araw</span><span>Google Workspace, Google Sheets and Gmail are trademarks of Google LLC. macrotool is an independent developer and is not affiliated with Google.</span></div>
   </div>
