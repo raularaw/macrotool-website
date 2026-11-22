@@ -64,8 +64,11 @@
   .co-pm li.no { color: var(--muted); }
   .co-pm h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 14px 0 0; }
   .co-pm p { color: var(--muted); font-size: .82rem; margin: 12px 0 0; }
-  .co-fine { margin-top: 28px; color: var(--muted); font-size: .85rem; max-width: 70ch; }
+  .co-fine { grid-column: 2; margin: 4px 0 0; padding: 18px 8px 0; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: .82rem; line-height: 1.6; }
+  .co-fine p { margin: 0; }
+  .co-fine p + p { margin-top: 8px; }
   @media (max-width: 1100px) { .co { grid-template-columns: 280px minmax(0, 1fr); } .co-qr { display: none; } }
+  @media (max-width: 760px) { .co-fine { grid-column: auto; } }
   @media (max-width: 760px) { .co { grid-template-columns: 1fr; } }
 </style>
 <section class="section">
@@ -100,8 +103,11 @@
         <p>Scan to finish this purchase on your phone with Apple Pay, Google Pay, PayPal or a card.</p>
         <div id="qr" aria-label="QR code that opens this checkout on your phone"></div>
       </div>
+      <div class="co-fine">
+        <p>Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns. Taxes are calculated for your country at checkout.</p>
+        <p><a href="../refunds/">Refund Policy</a> &middot; <a href="../support/">Contact support</a></p>
+      </div>
     </div>
-    <p class="co-fine">Our order process is conducted by our online reseller Paddle.com. Paddle.com is the Merchant of Record for all our orders. Paddle provides all customer service inquiries and handles returns. Taxes are calculated for your country at checkout. <a href="../refunds/">Refund Policy</a> &middot; <a href="../support/">Contact support</a></p>
   </div>
 </section>
 <script src="../assets/js/qrcode.min.js"></script>
