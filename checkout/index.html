@@ -51,6 +51,19 @@
   .co-qr p { color: var(--muted); font-size: .88rem; margin: 0 0 14px; }
   .co-qr #qr { display: inline-block; padding: 10px; background: #fff; border-radius: 10px; border: 1px solid var(--line); }
   .co-qr #qr img, .co-qr #qr canvas { display: block; }
+  .co-pm { margin-top: 18px; border-top: 1px solid var(--line); padding-top: 14px; font-size: .9rem; }
+  .co-pm summary { cursor: pointer; font-weight: 600; color: var(--ink); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .co-pm summary::-webkit-details-marker { display: none; }
+  .co-pm summary::after { content: ""; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); margin: -4px 4px 0 0; transition: transform .15s; }
+  .co-pm[open] summary::after { transform: rotate(-135deg); margin-top: 4px; }
+  .co-pm ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 7px; }
+  .co-pm li { display: flex; justify-content: space-between; gap: 10px; }
+  .co-pm li span { white-space: nowrap; }
+  .co-pm li small { color: var(--muted); text-align: right; }
+  .co-pm li.ok span::before { content: "✓ "; color: var(--green); font-weight: 700; }
+  .co-pm li.no { color: var(--muted); }
+  .co-pm h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 14px 0 0; }
+  .co-pm p { color: var(--muted); font-size: .82rem; margin: 12px 0 0; }
   .co-fine { margin-top: 28px; color: var(--muted); font-size: .85rem; max-width: 70ch; }
   @media (max-width: 1100px) { .co { grid-template-columns: 280px minmax(0, 1fr); } .co-qr { display: none; } }
   @media (max-width: 760px) { .co { grid-template-columns: 1fr; } }
@@ -69,6 +82,14 @@
             <dt class="total">Total today</dt><dd class="total" id="s-total"></dd>
           </dl>
         </div>
+        <details class="co-pm" id="pm">
+          <summary>Ways to pay</summary>
+          <h3>Available for you</h3>
+          <ul id="pm-ok"></ul>
+          <h3 id="pm-no-h">Other countries and devices</h3>
+          <ul id="pm-no"></ul>
+          <p>The checkout only shows the ways to pay that work for your country and device. Change the country in the checkout to see others.</p>
+        </details>
         <div class="hero-actions" style="margin-top:22px">
           <a class="btn btn-ghost" href="../apps/tab-transfer/#pricing">Back to pricing</a>
         </div>
@@ -137,6 +158,41 @@
     $('sum').hidden = false;
   }
 
+  // "Ways to pay": every payment method switched on in Paddle, split by what works for this buyer.
+  var ua = navigator.userAgent || '';
+  var isAndroid = /Android/i.test(ua);
+  var isChrome = /Chrome\//.test(ua) && !/Edg\/|OPR\/|SamsungBrowser/.test(ua) && !/iPhone|iPad/.test(ua);
+  var hasApplePay = !!(window.ApplePaySession && (function () { try { return ApplePaySession.canMakePayments(); } catch (e) { return false; } })());
+  var METHODS = [
+    { name: 'Credit or debit card', where: 'All countries', ok: function () { return true; } },
+    { name: 'PayPal', where: 'Most countries', ok: function () { return true; } },
+    { name: 'Google Pay', where: 'Chrome or Android', ok: function (cc) { return (isChrome || isAndroid) && cc !== 'IN' && cc !== 'TR'; } },
+    { name: 'Apple Pay', where: 'Safari on iPhone, iPad or Mac', ok: function () { return hasApplePay; } },
+    { name: 'iDEAL', where: 'Netherlands', ok: function (cc) { return cc === 'NL'; } },
+    { name: 'Bancontact', where: 'Belgium', ok: function (cc) { return cc === 'BE'; } },
+    { name: 'BLIK', where: 'Poland', ok: function (cc) { return cc === 'PL'; } },
+    { name: 'MB WAY', where: 'Portugal', ok: function (cc) { return cc === 'PT'; } }
+  ];
+  var lastCc = null;
+  function methods(cc) {
+    cc = String(cc || '').toUpperCase();
+    if (cc === lastCc) return;
+    lastCc = cc;
+    var ok = $('pm-ok'), no = $('pm-no');
+    ok.textContent = ''; no.textContent = '';
+    METHODS.forEach(function (m) {
+      var li = document.createElement('li');
+      var name = document.createElement('span'); name.textContent = m.name;
+      var where = document.createElement('small'); where.textContent = m.where;
+      li.appendChild(name); li.appendChild(where);
+      var yes = m.ok(cc);
+      li.className = yes ? 'ok' : 'no';
+      (yes ? ok : no).appendChild(li);
+    });
+    $('pm-no-h').hidden = !no.children.length;
+  }
+  methods('');
+
   if (env === 'sandbox') Paddle.Environment.set('sandbox');
   Paddle.Initialize({
     token: TOKENS[env],
@@ -145,6 +201,8 @@
       if (ev.name === 'checkout.loaded' || ev.name === 'checkout.updated' || ev.name === 'checkout.customer.updated') {
         say('Checkout', '');
         summary(ev.data);
+        var addr = ev.data && ev.data.customer && ev.data.customer.address;
+        if (addr && addr.country_code) methods(addr.country_code);
       }
       if (ev.name === 'checkout.completed') {
         var id = (ev.data && ev.data.transaction_id) || txn;
