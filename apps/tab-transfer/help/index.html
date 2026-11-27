@@ -134,9 +134,9 @@
     <h2 id="automation">6. Automation</h2>
     <ul>
       <li id="instant"><strong>Move instantly</strong>: as soon as anyone changes a status, editors included, that row moves. It runs under the owner's account.</li>
-      <li id="schedule"><strong>Run on a schedule</strong> <em>(Pro and Ultra)</em>: every 1, 2, 4, 6, 8 or 12 hours, or daily at a chosen hour in the spreadsheet's time zone. Use it when statuses are set by formulas, Google Forms or imports, which don't count as edits.</li>
+      <li id="schedule"><strong>Watch for form entries and formula changes</strong> <em>(Pro and Ultra)</em>: rows also move after each Google Forms entry, after rows are inserted or pasted, and after any edit that changes a formula status (for example a Status column that reads =IF(Paid="Yes","Invoiced","Quoted")). Typed statuses still follow <em>Move instantly</em>.</li>
     </ul>
-    <p>Google allows add-on schedules at most once an hour. Turning an option off removes its trigger when you save.</p>
+    <p>Statuses that change on their own, with nobody editing the sheet (for example a formula using TODAY(), or an IMPORTRANGE from another file), move on the next edit or when you click <strong>Move rows now</strong>. Turning an option off removes its trigger when you save.</p>
 
     <h2 id="move">7. Move tab</h2>
     <p>The <strong>Move</strong> tab is the home screen.</p>
@@ -147,7 +147,7 @@
     </ul>
     <p>Both buttons stay greyed out until the setup is saved.</p>
     <h3 id="move-status">Status</h3>
-    <p>Shows who owns the automation, whether instant moves and the schedule are on, and the email setup at a glance.</p>
+    <p>Shows who owns the automation, whether instant moves and Watch are on, and the email setup at a glance.</p>
 
     <h2 id="formulas">8. Formulas, checkboxes &amp; formatting</h2>
     <ul>
@@ -212,14 +212,14 @@
     </ul>
 
     <h2 id="log">12. Activity log</h2><span id="activity" aria-hidden="true"></span>
-    <p>On the Move tab, click <strong>See all</strong> under <strong>Recent moves</strong> to open the activity log. It lists the 25 most recent runs: when they ran, how they were triggered (<em>Instant</em>, <em>Manual</em>, <em>Scheduled</em> or <em>Continued</em>), how many rows went to each tab, emails sent, and any problems. Recent moves on the Move tab shows the latest three. The owner can empty it with <strong>Clear log</strong> (click it twice to confirm), for example after a test run.</p>
+    <p>On the Move tab, click <strong>See all</strong> under <strong>Recent moves</strong> to open the activity log. It lists the 25 most recent runs: when they ran, how they were triggered (<em>Instant</em>, <em>Manual</em>, <em>Watch</em> or <em>Form entry</em>), how many rows went to each tab, emails sent, and any problems. Recent moves on the Move tab shows the latest three. The owner can empty it with <strong>Clear log</strong> (click it twice to confirm), for example after a test run.</p>
 
     <h2 id="plans">13. Plans &amp; license</h2>
     <p id="trial"><strong>15-day free trial.</strong> When you save your first setup, every feature (Ultra) is unlocked for 15 days, once per Google account. The plan card on the Move tab counts down the days, and you get one reminder email, from your own account to yourself, during the last 24 hours of your trial (the day before it ends). Buying during the trial simply replaces it.</p>
-    <p><strong>When the trial ends</strong>, nothing is deleted. The sidebar asks which 3 statuses keep moving rows (you can change this later from the Rules tab); the other rules are shown as paused. Email notifications, schedules and documents keep their settings and show <em>Paused</em>. Rows whose status points to a paused rule stay where they are. Buy Pro or Ultra and everything runs again exactly as you set it up.</p>
+    <p><strong>When the trial ends</strong>, nothing is deleted. The sidebar asks which 3 statuses keep moving rows (you can change this later from the Rules tab); the other rules are shown as paused. Email notifications, Watch and documents keep their settings and show <em>Paused</em>. Rows whose status points to a paused rule stay where they are. Buy Pro or Ultra and everything runs again exactly as you set it up.</p>
     <ul>
       <li><strong>Free, forever</strong>: 3 status rules, instant and manual moves, and everything in <a href="#formulas">section 8</a>.</li>
-      <li><strong>Pro: $18.99 once</strong>. Unlimited rules, scheduled runs, and email notifications with your signature and attachments.</li>
+      <li><strong>Pro: $18.99 once</strong>. Unlimited rules, Watch for form entries and formula changes, and email notifications with your signature and attachments.</li>
       <li><strong>Ultra: $26.99 once</strong>. Everything in Pro, plus <a href="#documents">documents</a> from Google Doc, Word and PDF form templates, attached to emails.</li>
       <li><strong>Pro to Ultra</strong>: if you own Pro, upgrading costs only the $8 difference.</li>
     </ul>
@@ -240,11 +240,11 @@
     <p>The original spreadsheet and its automation are not affected either way.</p>
 
     <h2 id="large-runs">15. Large sheets &amp; limits</h2>
-    <p>Google stops any add-on run after 6 minutes. For very large batches Tab Transfer works to a budget: it stops starting new moves at 5 minutes and stops sending emails at 5½ minutes, then schedules itself to continue about a minute later, repeating until everything is done. A tab is never half-moved, and unsent emails are queued and sent first by the next run, so nothing is duplicated or lost. You'll see <em>Continued</em> entries in the Log.</p>
+    <p>Google stops any add-on run after 6 minutes. For very large batches Tab Transfer works to a budget: it stops starting new moves at 5 minutes and stops sending emails at 5½ minutes, and leaves the rest for the next run. When you click <strong>Move rows now</strong>, the sidebar starts the next run by itself and keeps going until everything is done (keep it open). Automatic runs leave the rest for the next edit, form entry or Move rows now. A tab is never half-moved, and unsent emails are queued and sent first by the next run, so nothing is duplicated or lost.</p>
 
     <h2 id="troubleshooting">16. Troubleshooting</h2>
     <h3>Rows aren't moving</h3>
-    <ul><li>Check the status column header is in row 1 and spelled the same on each tab.</li><li>Check the status has a destination in Rules and the tab still exists.</li><li>Make sure the tab is checked under Watched tabs.</li><li>Statuses set by formulas or forms need the schedule (or a manual move).</li><li>Open the Log for the last run and any message.</li></ul>
+    <ul><li>Check the status column header is in row 1 and spelled the same on each tab.</li><li>Check the status has a destination in Rules and the tab still exists.</li><li>Make sure the tab is checked under Watched tabs.</li><li>Statuses set by formulas or forms need <a href="#schedule">Watch</a> turned on (or a manual move).</li><li>Open the Log for the last run and any message.</li></ul>
     <h3>"Only the automation owner can…"</h3>
     <p>Someone else saved the setup first. Ask the owner, or take over if they've left the file.</p>
     <h3>A column is empty in the destination</h3>
@@ -257,7 +257,7 @@
     <p>Click <strong>Already bought?</strong> on the Move tab. Make sure you bought with the same Google account you use in Sheets. Still stuck? Email support with your purchase email.</p>
 
     <h2 id="uninstall">17. Turn off or uninstall</h2>
-    <p>To stop automation in one spreadsheet, turn off <em>Move instantly</em> and <em>Run on a schedule</em> in Behavior and save. To remove Tab Transfer completely, go to <strong>Extensions → Add-ons → Manage add-ons</strong>, open Tab Transfer's menu and choose <strong>Uninstall</strong>. You can also remove its access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>. Attachment files stay in your Drive folder until you delete them.</p>
+    <p>To stop automation in one spreadsheet, turn off <em>Move instantly</em> and <em>Watch for form entries and formula changes</em> in Behavior and save. To remove Tab Transfer completely, go to <strong>Extensions → Add-ons → Manage add-ons</strong>, open Tab Transfer's menu and choose <strong>Uninstall</strong>. You can also remove its access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>. Attachment files stay in your Drive folder until you delete them.</p>
     <p>Still need help? Email <a href="mailto:support@macrotool.app">support@macrotool.app</a>.</p>
   </article>
 </div>
